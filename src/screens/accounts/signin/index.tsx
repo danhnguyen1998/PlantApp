@@ -15,6 +15,11 @@ import {rootSignupScreen} from '../signup/navigation';
 import {IProps, IState} from './propState';
 import {logInAction} from './redux/actions';
 import styles from './styles';
+import {GoogleSignin, GoogleSigninButton, statusCodes} from '@react-native-community/google-signin';
+import {rootMyCommitmentScreen} from '@src/screens/myCommitment/navigation';
+import AsyncStorage from '@react-native-community/async-storage';
+import {System} from '@src/constant';
+import GDrive from 'react-native-google-drive-api-wrapper';
 
 class LoginComponent extends React.Component<IProps> {
   email: TextInput;
@@ -69,11 +74,44 @@ class LoginComponent extends React.Component<IProps> {
     });
   };
 
+  signIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+      const token = (await GoogleSignin.getTokens()).accessToken;
+      GDrive.setAccessToken(token);
+      GDrive.init();
+      if (GDrive.isInitialized()) {
+        AsyncStorage.setItem(System.TOKEN, JSON.stringify(token));
+      }
+      if (userInfo) rootMyCommitmentScreen();
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+      } else {
+        // some other error happened
+      }
+    }
+  };
+
+  signOut = async () => {};
+
+  isSignedIn = async () => {
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    console.log(isSignedIn, 'isSignedIn');
+
+    // this.setState({ isLoginScreenPresented: !isSignedIn });
+  };
+
   render() {
     return (
       <Layout>
-        <View style={{backgroundColor: colors.bgColor, flex: 1}}>
-          <KeyboardAwareScrollView
+        <View style={{backgroundColor: colors.bgColor, flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+          {/* <KeyboardAwareScrollView
             keyboardShouldPersistTaps="handled"
             style={[common.container, {paddingHorizontal: ms(28), marginTop: ms(26)}]}
             accessibilityLabel="login-page">
@@ -110,9 +148,30 @@ class LoginComponent extends React.Component<IProps> {
                 <Text style={common.textLink}>Forgot password? </Text>
               </TouchableOpacity>
             </View>
-          </KeyboardAwareScrollView>
+          </KeyboardAwareScrollView> */}
+          <GoogleSigninButton
+            style={{width: 192, height: 48}}
+            size={GoogleSigninButton.Size.Wide}
+            color={GoogleSigninButton.Color.Dark}
+            onPress={this.signIn}
+            // disabled={this.state.isSigninInProgress}
+          />
+          {/* <ButtonComponent
+            btnFull={true}
+            onPress={this.signOut}
+            text="Sign out"
+            // disabled={this.props.isLoading}
+            styleContainer={{marginHorizontal: ms(44)}}
+          />
+           <ButtonComponent
+            btnFull={true}
+            onPress={this.isSignedIn}
+            text="isSignedIn"
+            // disabled={this.props.isLoading}
+            styleContainer={{marginHorizontal: ms(44)}}
+          /> */}
         </View>
-        <View style={styles.bottomFixed}>
+        {/* <View style={styles.bottomFixed}>
           <ButtonComponent
             btnFull={true}
             onPress={this._login}
@@ -126,7 +185,7 @@ class LoginComponent extends React.Component<IProps> {
               <Text style={common.textLink}>Sign Up</Text>
             </TouchableOpacity>
           </View>
-        </View>
+        </View> */}
       </Layout>
     );
   }

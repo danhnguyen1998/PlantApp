@@ -393,7 +393,7 @@ class StartRunningComponent extends React.Component<IProps> {
               <Icon5 name="chevron-left" size={ms(20)} />
             </TouchableOpacity>
           }
-          centerComponent={<Text style={common.headerTitle}>Pledge details</Text>}
+          centerComponent={<Text style={common.headerTitle}>Plant details</Text>}
         />
         <ScrollView style={common.flex_1}>
           <View style={common.container}>

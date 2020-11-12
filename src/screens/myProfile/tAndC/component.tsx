@@ -27,18 +27,18 @@ export default function TAndCComponent(props: IProps) {
       <ScrollView style={styles.container}>
         <View style={styles.viewContainer}>
           <Text style={styles.intro}>
-            It is very extremely important that you read these terms and conditions prior to using Pledger, as the
-            following terms govern the use of the Pledger website, and the content and services available on or through
+            It is very extremely important that you read these terms and conditions prior to using Plantr, as the
+            following terms govern the use of the Plantr website, and the content and services available on or through
             the website.
           </Text>
           <Text style={styles.intro}>
-            The website is owned and operated by Pledger, and we offer its use conditional to your acceptance of all of
+            The website is owned and operated by Plantr, and we offer its use conditional to your acceptance of all of
             the terms and conditions herein contained. If you do not agree with any or all the conditions of this
             agreement, please desist from using this website.
           </Text>
           <Text style={styles.intro}>
             We may review/modify these terms and conditions at any time we deem fit without prior notice. We will take
-            your use of the Pledger website after any such change has been made as your continued agreement to be
+            your use of the Plantr website after any such change has been made as your continued agreement to be
             subject to the terms as changed. We will indicate the last date updated at the top of this page every time
             we revise/review our terms.
           </Text>
@@ -49,8 +49,8 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.title}>What we do</Text>
           <Text style={styles.content}>
-            Pledger offers a platform for users to set goals and track their achievements towards those goals. We allow
-            users to use the website to enter into binding contracts in which they Pledge to meet their goals (a "Pledge
+            Plantr offers a platform for users to set goals and track their achievements towards those goals. We allow
+            users to use the website to enter into binding contracts in which they Plant to meet their goals (a "Plant
             Contract").
           </Text>
           <Text style={styles.title}>Eligibility</Text>
@@ -70,7 +70,7 @@ export default function TAndCComponent(props: IProps) {
           <Text style={styles.contentSub}>You hereby represent that;</Text>
           <Text style={styles.contentSub}>(a) you are of legal age to form a binding contract;</Text>
           <Text style={styles.contentSub}>
-            (b) the information provided by you to Pledger, during registration process and in your subsequent use of
+            (b) the information provided by you to Plantr, during registration process and in your subsequent use of
             the service, is completely honest, accurate and straightforward;
           </Text>
           <Text style={styles.contentSub}>
@@ -78,7 +78,7 @@ export default function TAndCComponent(props: IProps) {
             the laws of another relevant jurisdiction.
           </Text>
           <Text style={styles.contentSub}>
-            We may delete your account and/or deny you any and all current or future use of the Pledger service if we
+            We may delete your account and/or deny you any and all current or future use of the Plantr service if we
             find out that the information you provided is dishonest, inaccurate, or intentionally deceptive.
           </Text>
           <Text style={styles.contentSub}>
@@ -90,18 +90,18 @@ export default function TAndCComponent(props: IProps) {
             You also agree that you will be fully liable for each activity that occurs under your account.
           </Text>
           <Text style={styles.contentSub}>
-            To maintain the sanctity of your account, you hereby agree to immediately notify Pledger of any unauthorized
+            To maintain the sanctity of your account, you hereby agree to immediately notify Plantr of any unauthorized
             use of your password or account or any other breach of security. You are also to ensure that you properly
             exit from your account at the end of each session.
           </Text>
           <Text style={styles.contentSub}>
-            Pledger will in no way be answerable for any damage or loss in any way connected to your inability to
+            Plantr will in no way be answerable for any damage or loss in any way connected to your inability to
             safeguard your account confidentiality.
           </Text>
           <Text style={styles.title}>Our Licence to You</Text>
           <Text style={styles.content}>
             We grant all eligible users a limited, fully reversible, non-sublicensable, non-exclusive, and
-            non-assignable license to use Pledger and its provided services in full adherence with this agreement.
+            non-assignable license to use Plantr and its provided services in full adherence with this agreement.
           </Text>
           <Text style={styles.contentSub}>
             You are permitted to use the website only for non-commercial and personal use and may not use the services
@@ -124,8 +124,8 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.contentSub}>
             As a user, you have the choice of terminating your membership at any time that you so choose for any reason
-            whatsoever. You, however, understand that if you have an on-going Pledge Contract at the time of your
-            termination, you will continue to be constrained by the terms of that Pledge Contract until that Pledge
+            whatsoever. You, however, understand that if you have an on-going Plant Contract at the time of your
+            termination, you will continue to be constrained by the terms of that Plant Contract until that Plant
             Contract ends.
           </Text>
           <Text style={styles.contentSub}>
@@ -141,19 +141,19 @@ export default function TAndCComponent(props: IProps) {
             contrary.
           </Text>
           <Text style={styles.contentSub}>
-            All interests, titles, and rights relating to the content are owned, controlled by, or licensed to Pledger.
+            All interests, titles, and rights relating to the content are owned, controlled by, or licensed to Plantr.
             You hereby accept that the website and its contents are designed and presented by us in a unique format and
             appearance, and users are allowed to view the website and its contents and print or download one copy of the
             website, or specific parts of the website, for personal use only.
           </Text>
           <Text style={styles.contentSub}>
-            Pledger, www.pledgerapp.io, its logo, service marks, trademarks, and graphics used as it relates to this
-            website are registered trademarks of Pledger. Other logos, service marks, trademarks, and graphics used in
+            Plantr, www.Plantrapp.io, its logo, service marks, trademarks, and graphics used as it relates to this
+            website are registered trademarks of Plantr. Other logos, service marks, trademarks, and graphics used in
             and on this website may be the trademarks of other third parties.
           </Text>
           <Text style={styles.contentSub}>
-            Your use of the Pledger website does not grant you the right or license to replicate or otherwise use any
-            Pledger or third-party trademarks.
+            Your use of the Plantr website does not grant you the right or license to replicate or otherwise use any
+            Plantr or third-party trademarks.
           </Text>
           {/* <Text style={styles.title}>Copyright Protection Clause</Text>
           <Text style={styles.content}>
@@ -166,19 +166,19 @@ export default function TAndCComponent(props: IProps) {
             so to the contrary.
           </Text>
           <Text style={styles.contentSub}>
-            All interests, titles, and rights relating to the content are owned, controlled by, or licensed to Pledge.
+            All interests, titles, and rights relating to the content are owned, controlled by, or licensed to Plant.
             You hereby accept that the website and its contents are designed and presented by us in a unique format and
             appearance, and users are allowed to view the website and its contents and print or download one copy of the
             website, or specific parts of the website, for personal use only.
           </Text>
           <Text style={styles.contentSub}>
-            Pledge, www.Pledge.com, its logo, service marks, trademarks, and graphics used as it relates to this website
-            are registered trademarks of Pledge. Other logos, service marks, trademarks, and graphics used in and on
+            Plant, www.Plant.com, its logo, service marks, trademarks, and graphics used as it relates to this website
+            are registered trademarks of Plant. Other logos, service marks, trademarks, and graphics used in and on
             this website may be the trademarks of other third parties.
           </Text>
           <Text style={styles.contentSub}>
-            Your use of the Pledge website does not grant you the right or license to replicate or otherwise use any
-            Pledge or third-party trademarks.
+            Your use of the Plant website does not grant you the right or license to replicate or otherwise use any
+            Plant or third-party trademarks.
           </Text> */}
           <Text style={styles.title}>Copyright Protection Clause</Text>
           <Text style={styles.content}>
@@ -228,7 +228,7 @@ export default function TAndCComponent(props: IProps) {
             all contents are the personal responsibility of the individual from which they came from.
           </Text>
           <Text style={styles.contentSub}>
-            This means that each user and not Pledger will bear responsibility for all the content that they post,
+            This means that each user and not Plantr will bear responsibility for all the content that they post,
             transmit, email, upload, or otherwise provide through the website. We do not vouch for their truthfulness,
             quality, and accurateness, and we are not in any way endorsing any opinion/content posted by any user.
           </Text>
@@ -238,18 +238,18 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.contentSub}>
             Using this website means that you may find unpleasant, indecent, or otherwise objectionable materials. In no
-            event will Pledger be liable for any omissions or mistakes in any content, any damage or loss of any type so
+            event will Plantr be liable for any omissions or mistakes in any content, any damage or loss of any type so
             experienced because of a user’s utilization of any content transmitted, posted, emailed, or otherwise
             provided through the website.
           </Text>
           <Text style={[styles.content, {marginTop: ms(25)}]}>
             You may not upload content that is illegal, slanderous, vile, humiliating or unmannerly to any other entity
-            or individual as decided by Pledger, and you may not submit/upload false content or the one that breaches
+            or individual as decided by Plantr, and you may not submit/upload false content or the one that breaches
             the rights of others, including patents, trade secrets trademarks, copyrights, and publicity or privacy
             rights.
           </Text>
           <Text style={styles.contentSub}>
-            Your content must not harm or seek to in any way harm minors, and may not imply that you a Pledger official,
+            Your content must not harm or seek to in any way harm minors, and may not imply that you a Plantr official,
             or misleadingly state or otherwise falsify your association with a person or entity.
           </Text>
           <Text style={styles.contentSub}>
@@ -266,13 +266,13 @@ export default function TAndCComponent(props: IProps) {
           <Text style={styles.contentSub}>
             We bar users from forging headers and from manipulating identifiers in a bid to hide the source of any
             material communicated through the service; and from uploading, posting, emailing, transmitting or otherwise
-            making available any content that they have no right to so provide under fiduciary or pledged relationships
+            making available any content that they have no right to so provide under fiduciary or Plantd relationships
             or any other law.
           </Text>
           <Text style={styles.contentSub}>
             You are not to provide advertisements, solicitations or spam links to other web sites or individuals,
-            without prior written permission from Pledger; chain letters or pyramid schemes; or content that imitates
-            another business, entity or person, including Pledger, its related entities, employees and agents.
+            without prior written permission from Plantr; chain letters or pyramid schemes; or content that imitates
+            another business, entity or person, including Plantr, its related entities, employees and agents.
           </Text>
           <Text style={styles.contentSub}>
             As a user, your uploaded content may not interrupt the standard flow of dialogue; act in a way that hinders
@@ -285,17 +285,17 @@ export default function TAndCComponent(props: IProps) {
             age, gender, sexual orientation, or religion.
           </Text>
           <Text style={styles.contentSub}>
-            You may not collect other users’ information or content, or otherwise, access Pledger using harvesting bots
+            You may not collect other users’ information or content, or otherwise, access Plantr using harvesting bots
             or any other automated means without our prior permission.
           </Text>
           <Text style={styles.contentSub}>
             You are fully and personally responsible for any content submitted by you and are agreeing to indemnify
-            Pledger and its affiliates for all and any claims ensuing from any content that you make available.
+            Plantr and its affiliates for all and any claims ensuing from any content that you make available.
           </Text>
           <Text style={styles.contentSub}>
             We reserve the right but are not obligated by law to continually monitor and assess the website's overall
             content to determine agreement with these terms and conditions. We may, in our sole discretion, exercise our
-            right to move, revise, or remove any content posted on Pledger for any reason, including violation of these
+            right to move, revise, or remove any content posted on Plantr for any reason, including violation of these
             terms, whether for legal or other reasons.
           </Text>
           <Text style={styles.contentSub}>
@@ -305,7 +305,7 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.title}>Disclaimers and Limitation of Liability</Text>
           <Text style={styles.content}>
-            The website, the website content, and our services are made available "as-is" and Pledger disclaims all
+            The website, the website content, and our services are made available "as-is" and Plantr disclaims all
             warranties and representations, whether this is express or implied. This includes without limitation the
             warranties of non-infringement, fitness for a particular purpose, suitability, merchantability, or title.
           </Text>
@@ -316,7 +316,7 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.contentSub}>
             We will not be liable to you for the content found on the website, whether this content is posted by us, by
-            third parties, by other Pledger users, or by programming or equipment related to the website.
+            third parties, by other Plantr users, or by programming or equipment related to the website.
           </Text>
           <Text style={styles.contentSub}>
             You accept that this website may, from time to time, be unavailable temporarily for reasons including but
@@ -326,35 +326,35 @@ export default function TAndCComponent(props: IProps) {
             not limited to user content.
           </Text>
           <Text style={styles.contentSub}>
-            Under no circumstances will Pledger be liable for any damage or loss, including any damage or loss to any
+            Under no circumstances will Plantr be liable for any damage or loss, including any damage or loss to any
             user content or personal injury or death that may occur as a result of your use of the services.
           </Text>
           <Text style={styles.contentSub}>
-            Pledger does not warrant or represent that the materials, content, or software found on the website and
+            Plantr does not warrant or represent that the materials, content, or software found on the website and
             through the service are error-free, current, accurate, reliable, or complete, neither do we warrant that the
             website is free of viruses or other injurious components. You must, therefore, exercise caution when using
             or downloading any such materials, content, or software.
           </Text>
           <Text style={styles.contentSub}>
-            Pledger is not a medical or psychological organization, and you may not take anything on this website and
+            Plantr is not a medical or psychological organization, and you may not take anything on this website and
             from this service as medical or psychological diagnosis or advice. You accept that we have no knowledge of
             your health condition(s) and that you bear the sole responsibility and will be liable for any actions that
             you take that may constitute a health or psychological risk to yourself.
           </Text>
           <Text style={styles.contentSub}>
-            Pledger cannot guarantee, nor does it, give any assurance or warranties as to the specific results obtained
+            Plantr cannot guarantee, nor does it, give any assurance or warranties as to the specific results obtained
             from the website's use.
           </Text>
           <Text style={styles.contentSub}>
-            Under no circumstances will Pledger or its owners, managers, staff or agents be held accountable for any
+            Under no circumstances will Plantr or its owners, managers, staff or agents be held accountable for any
             indirect, punitive, special, incidental, exemplary, or consequential loss or damages, including without
             limitation all lost goodwill, data, profit, opportunity, revenue and time that may occur from your use of
-            the website, even if Pledger has been made aware of the likelihood of such damages.
+            the website, even if Plantr has been made aware of the likelihood of such damages.
           </Text>
           <Text style={styles.contentSub}>
             We will not be held accountable for any situation whose occurrence was beyond our control that may cause the
-            Pledger services to be late, interrupted, or corrupt; any hurts, losses, or damages of any type arising as
-            it relates to, or as a consequence of, using Pledger.
+            Plantr services to be late, interrupted, or corrupt; any hurts, losses, or damages of any type arising as
+            it relates to, or as a consequence of, using Plantr.
           </Text>
           <Text style={styles.contentSub}>
             We will not bear responsibility to you or other individuals, for any events outside our control; or for any
@@ -388,12 +388,12 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.title}>Disputes between users</Text>
           <Text style={styles.content}>
-            You are fully responsible and answerable for your interactions with other Pledger users. Despite the
+            You are fully responsible and answerable for your interactions with other Plantr users. Despite the
             foregoing, we have the right but are not obligated, to monitor disputes between you and other users.
           </Text>
           <Text style={styles.title}>Alternative Dispute Resolution</Text>
           <Text style={styles.content}>
-            You and Pledger agree that all disputes that may arise, however arising, between both of us or in relation
+            You and Plantr agree that all disputes that may arise, however arising, between both of us or in relation
             to this agreement shall be submitted first to non-binding mediation. Where the dispute is not resolvable
             through such mediation, the dispute shall be resolved through binding arbitration in Florida in accordance
             with the Consumer Procedures and Rules of the American Arbitration Association.
@@ -405,10 +405,10 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.title}>Indemnity</Text>
           <Text style={styles.content}>
-            You agree to shield, indemnify, and consider Pledger (its subsidiaries, affiliates, officers, agents,
+            You agree to shield, indemnify, and consider Plantr (its subsidiaries, affiliates, officers, agents,
             co-branders or other partners, and employees) innocent against any and all claims, expenses, and fees
-            (including but not limited to legal fees), and damages in connection with the Pledger website usage. You
-            also agree to so shield, indemnify, and hold Pledger innocent for all damages resulting from your violation
+            (including but not limited to legal fees), and damages in connection with the Plantr website usage. You
+            also agree to so shield, indemnify, and hold Plantr innocent for all damages resulting from your violation
             (if any) of this agreement.
           </Text>
           <Text style={styles.title}>Third-Party Beneficiaries</Text>
@@ -423,7 +423,7 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.title}>Waiter/Severability of Terms</Text>
           <Text style={styles.content}>
-            The failure of Pledger to implement or exercise any condition or right of these terms shall not be deemed or
+            The failure of Plantr to implement or exercise any condition or right of these terms shall not be deemed or
             labeled a waiver of such a condition or right. If any term of the agreement is declared by a court of
             competent jurisdiction in the United States to be illegal or unenforceable, we will modify that specific
             provision in an attempt to reflect the original intention. In this case, the residue of the conditions of
@@ -431,7 +431,7 @@ export default function TAndCComponent(props: IProps) {
           </Text>
           <Text style={styles.title}>No right of survivorship and non-transferability</Text>
           <Text style={styles.content}>
-            You agree that your Pledger account is non-transferable and that any rights to your Pledger account or
+            You agree that your Plantr account is non-transferable and that any rights to your Plantr account or
             contents shall be terminated upon your death.
           </Text>
           <Text style={styles.title}>Jurisdictional Law</Text>
@@ -447,11 +447,11 @@ export default function TAndCComponent(props: IProps) {
           <Text style={styles.contentSub}>
             You accept that we will continue to be bound by such terms indefinitely.
           </Text>
-          <Text style={styles.title}>Entire Agreement and Relationship with any Pledge Contract</Text>
+          <Text style={styles.title}>Entire Agreement and Relationship with any Plant Contract</Text>
           <Text style={styles.contentFooter}>
-            While these terms and conditions represent the entire agreement between you and Pledger regarding the use of
+            While these terms and conditions represent the entire agreement between you and Plantr regarding the use of
             the website, and even though it supersedes any prior agreements you may have, you accept that it does not
-            supersede any Pledge Contracts between you and Pledger.
+            supersede any Plant Contracts between you and Plantr.
           </Text>
         </View>
       </ScrollView>

@@ -169,7 +169,7 @@ class ChooseGoalComponent extends React.Component<IProps> {
         />
         <View style={styles.viewTitle}>
           <Image style={styles.titleImage} source={require('@src/assets/images/Rectangle_26.png')} />
-          <Text style={styles.title}>Choose your Pledge</Text>
+          <Text style={styles.title}>Choose your Plant</Text>
         </View>
         <ScrollView style={common.flex_1}>
           <View style={common.container}>

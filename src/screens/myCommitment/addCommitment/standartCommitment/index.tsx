@@ -200,7 +200,7 @@ class StandartCommitmentComponent extends React.Component<IProps> {
               <View style={styles.viewTitle}>
                 <Text style={styles.title}>Standard</Text>
                 <Image style={styles.titleImage} source={require('@src/assets/images/Rectangle_26.png')} />
-                <Text style={styles.title}>pledge</Text>
+                <Text style={styles.title}>Plant</Text>
               </View>
               <Image
                 style={styles.titleImgRight}
@@ -216,7 +216,7 @@ class StandartCommitmentComponent extends React.Component<IProps> {
               />
             </View>
             <View style={styles.viewContent}>
-              <Text>I Pledge to {this._renderGoalText()}</Text>
+              <Text>I Plant to {this._renderGoalText()}</Text>
               <View style={styles.viewInputGroup}>
                 <InputComponent
                   autoCapitalize="none"

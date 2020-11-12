@@ -198,7 +198,7 @@ class NotificationComponent extends React.Component<IProps> {
               </TouchableOpacity>
               <View style={styles.modalBody}>
                 <TitleComponent
-                  title={'Dishonored Pledge details'}
+                  title={'Dishonored Plant details'}
                   width={100}
                   styleContainer={common.alignSeftCenter}
                   styleUnderLine={{position: 'absolute', top: 60, left: 110}}
@@ -266,7 +266,7 @@ class NotificationComponent extends React.Component<IProps> {
                   <Text style={styles.userName}>{this.state.item.cCommitmentModel.email_friend}</Text> */}
                   <ButtonComponent
                     btnFull={false}
-                    text="See Pledge details"
+                    text="See Plant details"
                     onPress={this._goToTracker(this.state.item.cCommitmentModel)}
                   />
                 </View>

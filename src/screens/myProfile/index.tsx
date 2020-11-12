@@ -25,6 +25,7 @@ import {IProps, IState} from './propState';
 import styles from './styles';
 import {myProfileSupportScreen} from './support';
 import {myProfileTAndCScreen} from './tAndC';
+import {GoogleSignin, } from '@react-native-community/google-signin';
 
 class MyProfileComponent extends React.Component<IProps> {
   state: IState = {
@@ -70,13 +71,15 @@ class MyProfileComponent extends React.Component<IProps> {
     },
   ];
 
-  _signout = () => {
-    this.setState({showConfirmLogout: false}, async () => {
-      this.props.logOutAction();
-      AsyncStorage.setItem(System.PASS_STARTED, 'passed');
-      await BackgroundTimer.stopBackgroundTimer();
+  _signout = async() => {
+    try {
+      await GoogleSignin.revokeAccess();
+      await GoogleSignin.signOut();
+      AsyncStorage.clear();
       rootLoginScreen();
-    });
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   _toggleModalLogout = () => {

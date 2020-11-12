@@ -186,7 +186,7 @@ class ContractComponent extends React.Component<IProps> {
         <KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={true} style={common.flex_1}>
           <View style={common.container}>
             <View style={[common.flexColumn, common.mt30]}>
-              <Text style={styles.title}>Set up Pledge</Text>
+              <Text style={styles.title}>Set up Plant</Text>
               <Image style={styles.titleImage} source={require('@src/assets/images/Rectangle_26.png')} />
             </View>
             <Text style={styles.title}>contract</Text>

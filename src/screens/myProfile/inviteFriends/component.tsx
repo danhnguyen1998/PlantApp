@@ -99,7 +99,7 @@ export default function InviteFriendComponent(props: IProps) {
       />
       <KeyboardAwareScrollView keyboardShouldPersistTaps="handled" enableOnAndroid={true} style={common.container}>
         {/* <View style={common.container}> */}
-        <Text style={styles.text}>Invite your friends (or enemies) to make a Pledge to enter their emails below:</Text>
+        <Text style={styles.text}>Invite your friends (or enemies) to make a Plant to enter their emails below:</Text>
         <InputComponent
           ref={(input) => (name = input)}
           value={state.name}

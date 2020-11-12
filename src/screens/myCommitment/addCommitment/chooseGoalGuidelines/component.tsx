@@ -55,7 +55,7 @@ export default function ChooseGoalGuidelineComponent(props: IProps) {
           <View style={styles.viewTitleContainer}>
             <View style={styles.viewTitle}>
               <Text style={styles.title}>Set your</Text>
-              <Text style={styles.title}>Pledge</Text>
+              <Text style={styles.title}>Plant</Text>
               <Image style={styles.titleImage} source={require('@src/assets/images/Rectangle_26.png')} />
               <Text style={styles.title}>guidelines</Text>
             </View>
@@ -74,19 +74,19 @@ export default function ChooseGoalGuidelineComponent(props: IProps) {
           </View>
           <TouchableOpacity style={styles.item} onPress={_gotoStandart}>
             <View style={common.flexRowCenter}>
-              <Text style={styles.itemTitle}>Standard pledge</Text>
+              <Text style={styles.itemTitle}>Standard Plant</Text>
               <Image style={styles.imgIcon} source={require('@src/assets/images/sports-and-competition.png')} />
             </View>
-            <Text style={styles.itemText}>A simple Pledge set to be completed in a certain amount of time</Text>
+            <Text style={styles.itemText}>A simple Plant set to be completed in a certain amount of time</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.item} onPress={_gotoDaily}>
             <Text style={styles.itemTitle} />
             <View style={common.flexRowCenter}>
-              <Text style={styles.itemTitle}>Daily/weekly pledge</Text>
+              <Text style={styles.itemTitle}>Daily/weekly Plant</Text>
               <Image style={styles.imgIcon} source={require('@src/assets/images/interface.png')} />
             </View>
             <Text style={styles.itemText}>
-              A simple Pledge that you have to pledge every day/week for a certain amount of time
+              A simple Plant that you have to Plant every day/week for a certain amount of time
             </Text>
           </TouchableOpacity>
         </View>

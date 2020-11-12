@@ -421,7 +421,7 @@ class FinishOnBoardingComponent extends React.Component<IProps> {
               </TouchableOpacity>
             ) : null
           }
-          centerComponent={<Text style={common.headerTitle}>Pledge details</Text>}
+          centerComponent={<Text style={common.headerTitle}>Plant details</Text>}
         />
         <View style={common.flex_1}>
           <View style={common.container}>
@@ -687,7 +687,7 @@ class FinishOnBoardingComponent extends React.Component<IProps> {
           <View style={styles.modalContainer}>
             <Image source={require('@src/assets/images/Group414.png')} style={styles.headerImage} />
             <View style={common.flexColumn}>
-              <Text style={[styles.titleModal]}>Running Pledges</Text>
+              <Text style={[styles.titleModal]}>Running Plants</Text>
               <Image style={styles.titleImageModal} source={require('@src/assets/images/Rectangle_26.png')} />
             </View>
             <Text style={styles.text}>

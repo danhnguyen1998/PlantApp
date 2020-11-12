@@ -13,11 +13,11 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.pg.pledge</string>
+	<string>com.pg.Plant</string>
 	<key>PROJECT_ID</key>
-	<string>pledger-6e5ad</string>
+	<string>Plantr-6e5ad</string>
 	<key>STORAGE_BUCKET</key>
-	<string>pledger-6e5ad.appspot.com</string>
+	<string>Plantr-6e5ad.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>GOOGLE_APP_ID</key>
 	<string>1:457308072636:ios:df5a9e9ca6165dbbd43eb9</string>
 	<key>DATABASE_URL</key>
-	<string>https://pledger-6e5ad.firebaseio.com</string>
+	<string>https://Plantr-6e5ad.firebaseio.com</string>
 </dict>
 </plist>

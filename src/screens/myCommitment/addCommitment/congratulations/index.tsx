@@ -110,7 +110,7 @@ class DaylyWeeklyCongratComponent extends React.Component<IProps> {
                 <Image style={styles.titleImage} source={require('@src/assets/images/Rectangle_26.png')} />
               </View>
               <Text style={styles.textDefault}>
-                Wow you’ve Pledged to {this._renderGoalText()}
+                Wow you’ve Plantd to {this._renderGoalText()}
                 {this.props.addCommitmentReducer.location_name
                   ? ` ${this.props.addCommitmentReducer.location_name}`
                   : null}{' '}

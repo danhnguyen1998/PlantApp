@@ -13,6 +13,7 @@ import {persistStore} from 'redux-persist';
 import configureStore from './src/boot/configureStore';
 import {registerScreens} from './src/registerScreens';
 import Mixpanel from 'react-native-mixpanel';
+import {GoogleSignin} from '@react-native-community/google-signin';
 
 typography();
 
@@ -30,19 +31,12 @@ Navigation.events().registerAppLaunchedListener(() => {
           payload: isConnected,
         });
 
-        const checkPassStarted = await AsyncStorage.getItem(System.PASS_STARTED);
-        const account = store.getState().account;
-        if (checkPassStarted !== 'passed') {
-          rootStartedScreen();
-        } else if (account.id) {
-          const account = await getAccountInfor();
-          console.log(account, 'account');
-          if (account) {
-            await store.dispatch(setAccountAction(account));
-            rootMyCommitmentScreen();
-          } else {
-            rootLoginScreen();
-          }
+        GoogleSignin.configure({
+          scopes: ['https://www.googleapis.com/auth/drive'],
+        });
+        const token = await AsyncStorage.getItem(System.TOKEN);
+        if (token) {
+          rootMyCommitmentScreen();
         } else {
           rootLoginScreen();
         }

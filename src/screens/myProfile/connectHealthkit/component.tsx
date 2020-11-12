@@ -42,7 +42,7 @@ export default function ConnectHealthkitComponent(props: IProps) {
         <View style={styles.viewContainer}>
           <Text style={styles.textContent}>1. Open Settings, tab Health</Text>
           <Text style={styles.textContent}>2. Choose Data Access & Devices</Text>
-          <Text style={styles.textContent}>3. Choose Pledger App</Text>
+          <Text style={styles.textContent}>3. Choose Plantr App</Text>
           <Text style={styles.textContent}>4. Turn all categories on</Text>
         </View>
         <View style={styles.buttonConnect}>

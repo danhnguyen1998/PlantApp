@@ -15,21 +15,30 @@ import {IProps, IState} from './propState';
 import styles from './styles';
 import ButtonComponent from '@src/containers/components/button';
 import {myProfileUpdatePaymentScreen} from '@src/screens/myProfile/payment/updatePayment';
+import ImagePicker, {Image as IMG} from 'react-native-image-crop-picker';
+import moment from 'moment';
+import GDrive from 'react-native-google-drive-api-wrapper';
+import ActionSheet from 'react-native-actionsheet';
+import InputComponent from '@src/containers/components/input';
+var RNFS = require('react-native-fs');
 
 export default function BottomTabNavigation(props: IProps) {
   props = useSelector<RootState, IProps>((state: RootState) => ({
     ...props,
     hasPaymentFailed: state.account.hasPaymentFailed,
   }));
+  let ActionSheetSelectPhoto: ActionSheet = null;
 
   const [state, setState] = useState<IState>({
     showConfirmLogout: false,
+    name: '',
+    showModalName: false,
   });
 
   const _tabs = [
     {
       key: APP_MY_COMMITMENT_SCREEN,
-      label: 'Pledges',
+      label: 'Plants',
       barColor: colors.white,
       img: 'ios-list',
       onPress: () => rootMyCommitmentScreen(),
@@ -61,11 +70,87 @@ export default function BottomTabNavigation(props: IProps) {
     },
   ];
 
-  const _addCommitmentScreen = () => {
-    if (!props.hasPaymentFailed) {
-      addCommitmentChooseGoalScreen(props.componentId);
-    } else {
-      _toggleModal();
+  const onPressAddPhotoBtn = () => {
+    setState((state: IState) => ({
+      ...state,
+      showModalName: !state.showModalName,
+    }));
+    ActionSheetSelectPhoto.show();
+  };
+
+  const showModalName = () => {
+    setState((state: IState) => ({
+      ...state,
+      showModalName: !state.showModalName,
+    }));
+  };
+
+  const _addCommitmentScreen = (index) => {
+    console.log(index, '1');
+    switch (index) {
+      case 0:
+        ImagePicker.openCamera({
+          compressImageQuality: 0.1,
+        }).then(async (image) => {
+          const folderId = await GDrive.files.safeCreateFolder({
+            name: 'PlantApp',
+            parents: ['root'],
+          });
+          RNFS.readFile((image as IMG).path, 'base64').then((res) => {
+            GDrive.files
+              .createFileMultipart(
+                res,
+                (image as IMG).mime || 'image/jpeg',
+                {
+                  parents: [folderId], //or any path
+                  name: (image as IMG).filename || moment(new Date()).format('hmmssMMDDYY') + '.jpg',
+                },
+                true,
+              )
+              .then((response) => {
+                console.log(response, 'r');
+              }).catch = (err) => {
+              console.log('error', err);
+            };
+          });
+        });
+        break;
+      case 1:
+        ImagePicker.openPicker({
+          multiple: false,
+          mediaType: 'photo',
+          // compressImageQuality: 0.1,
+        })
+          .then(async (image) => {
+            const folderId = await GDrive.files.safeCreateFolder({
+              name: 'PlantApp',
+              parents: ['root'],
+            });
+            RNFS.readFile((image as IMG).path, 'base64').then((res) => {
+              GDrive.files
+                .createFileMultipart(
+                  res,
+                  (image as IMG).mime || 'image/jpeg',
+                  {
+                    parents: [folderId], //or any path
+                    name: (image as IMG).filename || moment(new Date()).format('hmmssMMDDYY') + '.jpg',
+                  },
+                  true,
+                )
+                .then((response) => {
+                  console.log(response, 'r');
+                }).catch = (err) => {
+                console.log('error', err);
+              };
+            });
+          })
+          .catch(() => {
+            return;
+          });
+        break;
+
+      default:
+        break;
     }
   };
 
@@ -97,13 +182,20 @@ export default function BottomTabNavigation(props: IProps) {
     />
   );
 
+  const _onChangeText = (evt: any) => () => {
+    setState((state: IState) => ({...state, name: evt}));
+  };
+
   return (
     <Fragment>
-      {props.showAddCommitments ? (
+      {/* {props.showAddCommitments ? (
         <TouchableOpacity style={styles.btnCenter} onPress={_addCommitmentScreen}>
           <Icon name="ios-add" size={ms(68)} color={colors.white} style={styles.iconAdd} />
         </TouchableOpacity>
-      ) : null}
+      ) : null} */}
+      <TouchableOpacity style={styles.btnCenter} onPress={showModalName}>
+        <Icon name="ios-add" size={ms(68)} color={colors.white} style={styles.iconAdd} />
+      </TouchableOpacity>
       <BottomNavigation
         activeTab={props.activeTab}
         renderTab={_renderTab}
@@ -112,6 +204,43 @@ export default function BottomTabNavigation(props: IProps) {
         useLayoutAnimation={true}
         style={styles.bottomNavigation}
       />
+      <ActionSheet
+        ref={(o) => (ActionSheetSelectPhoto = o)}
+        title={'Select photo'}
+        options={['Take Photo...', 'Choose from Library...', 'Cancel']}
+        cancelButtonIndex={2}
+        destructiveButtonIndex={1}
+        onPress={_addCommitmentScreen}
+        on={true}
+      />
+
+      <Modal animationType="fade" transparent={true} visible={state.showModalName}>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            <TouchableOpacity style={styles.modalBtnClose} onPress={showModalName}>
+              <Icon name="ios-close" size={ms(20)} color={colors.manatee} />
+            </TouchableOpacity>
+            <Text style={styles.modalTile}>Please enter the name of your plant:</Text>
+            <View style={styles.modalGroupButton}>
+              <InputComponent
+                placeholder="Name of plant"
+                onChangeText={_onChangeText('showModalName')}
+                // secureTextEntry={true}
+                style={{width: 188, height: 49}}
+              />
+            </View>
+            <View style={styles.modalGroupButton}>
+              <ButtonComponent
+                // styleContainer={{width: ms(114)}}
+                styleButton={{backgroundColor: 'transparent', borderColor: colors.manatee}}
+                styleText={{fontSize: ms(13), color: colors.manatee}}
+                text="OK"
+                onPress={onPressAddPhotoBtn}
+              />
+            </View>
+          </View>
+        </View>
+      </Modal>
 
       <Modal animationType="fade" transparent={true} visible={state.showConfirmLogout}>
         <View style={styles.modalContainer}>
@@ -120,7 +249,7 @@ export default function BottomTabNavigation(props: IProps) {
               <Icon name="ios-close" size={ms(20)} color={colors.manatee} />
             </TouchableOpacity>
             <Text style={styles.modalTile}>
-              Please submit a working credit card before you can continue using Pledger
+              Please submit a working credit card before you can continue using Plantr
             </Text>
             <View style={styles.modalGroupButton}>
               <ButtonComponent

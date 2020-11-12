@@ -39,9 +39,9 @@ export default function AccountSettingComponent(props: IProps) {
   const dispatch = useDispatch();
   props = useSelector<RootState, IProps>((state: RootState) => ({
     ...props,
-    email: state.account.email,
-    first_name: state.account.first_name,
-    last_name: state.account.last_name,
+    email: '',
+    first_name: '',
+    last_name: '',
     avatar_img: state.account.avatar,
     changePasswordAction: (current_password: string, new_password: string) =>
       dispatch(changePasswordAction(current_password, new_password)),

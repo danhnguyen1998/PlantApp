@@ -422,8 +422,8 @@ export const ListCommitmentComponent: FC<IProps> = (props: IProps) => {
       refreshControl={<RefreshControl refreshing={state.refreshing} onRefresh={onRefresh} />}
     />
   ) : (
-    <View style={styles.listNoPledge}>
-      <Text style={styles.textNoPledge}>No active pledges</Text>
+    <View style={styles.listNoPlant}>
+      <Text style={styles.textNoPlant}>No active Plants</Text>
     </View>
   );
 };

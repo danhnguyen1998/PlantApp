@@ -12,27 +12,27 @@ import { logInAction } from './actions';
 
 function* logInWatcher() {
   yield takeLatest(logInAction, function* ({payload}: any) {
-    const {username, password} = payload;
-    try {
-      yield put(onLoadingAction());
-      const result = yield call(checkLogin, username, password);
-      yield AsyncStorage.setItem(System.TOKEN, `Bearer ${result.access_token}`);
-      const account = yield call(getAccountInfor);
-      if (account) {
-        yield put(setAccountAction(account));
+    // const {username, password} = payload;
+    // try {
+      // yield put(onLoadingAction());
+      // const result = yield call(checkLogin, username, password);
+      // yield AsyncStorage.setItem(System.TOKEN, `Bearer ${result.access_token}`);
+      // const account = yield call(getAccountInfor);
+      // if (account) {
+      //   yield put(setAccountAction(account));
         yield call(rootMyCommitmentScreen);
-      }
-    } catch (error) {
-      if (error.message === 'ACCOUNT_NOT_ACTIVE') {
-        rootSignupVerifyCodeScreen({email: username});
-      } else if (error.message === 'ACCOUNT_HAS_BEEN_DELETED') {
-        logError('The account has been deleted.');
-      } else {
-        logError('Either the email or password is incorrect. Please try again.');
-      }
-    } finally {
-      yield put(offLoadingAction());
-    }
+      // }
+    // } catch (error) {
+    //   if (error.message === 'ACCOUNT_NOT_ACTIVE') {
+    //     rootSignupVerifyCodeScreen({email: username});
+    //   } else if (error.message === 'ACCOUNT_HAS_BEEN_DELETED') {
+    //     logError('The account has been deleted.');
+    //   } else {
+    //     logError('Either the email or password is incorrect. Please try again.');
+    //   }
+    // } finally {
+    //   yield put(offLoadingAction());
+    // }
   });
 }
 

@@ -120,13 +120,13 @@ class CheckInLocationComponent extends React.Component<IProps> {
           <View style={common.container}>
             <View style={styles.viewTitleContainer}>
               <View style={styles.viewTitle}>
-                <Text style={styles.title}>Set your Pledge guidelines</Text>
+                <Text style={styles.title}>Set your Plant guidelines</Text>
                 <Image style={styles.titleImage} source={require('@src/assets/images/Rectangle_26.png')} />
               </View>
               <Image style={styles.titleImgRight} source={require('@src/assets/images/Group272.png')} />
             </View>
             <View style={[common.m_hori_10]}>
-              <Text style={styles.textForm}>I Pledge to Physically visit</Text>
+              <Text style={styles.textForm}>I Plant to Physically visit</Text>
               <View style={common.mt10}>
                 <TouchableOpacity style={styles.selectLocation} onPress={this._gotoMap}>
                   <Icon type="entypo" name="location-pin" color={colors.darkGray} />

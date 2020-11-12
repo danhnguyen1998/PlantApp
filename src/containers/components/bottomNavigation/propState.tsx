@@ -6,6 +6,8 @@ interface IProps {
 }
 interface IState {
   showConfirmLogout: boolean;
+  name: string,
+  showModalName: boolean
 }
 
 export {IProps, IState};

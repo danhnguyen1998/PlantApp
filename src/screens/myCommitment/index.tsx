@@ -18,6 +18,7 @@ import {IProps} from './propState';
 import {getListCommitmentAction} from './redux/actions';
 import {addCommitmentStartRunningScreen} from './startRunning/navigation';
 import styles from './styles';
+import GDrive from 'react-native-google-drive-api-wrapper';
 
 export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
   const dispatch = useDispatch();
@@ -104,33 +105,16 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
         </View>
         <View style={styles.item}>
           <View style={styles.itemLeft}>
-            <Text style={styles.itemSubtext}>Active {props.countActive !== 1 ? 'Pledges' : 'Pledge'}</Text>
+            <Text style={styles.itemSubtext}>Active {props.countActive !== 1 ? 'Plants' : 'Plant'}</Text>
             <Text style={styles.numberCount}>{props.countActive}</Text>
           </View>
           <View style={styles.itemRight}>
-            <Text style={styles.itemSubtext}>Honored {props.countFinish !== 1 ? 'Pledges' : 'Pledge'}</Text>
+            <Text style={styles.itemSubtext}>Honored {props.countFinish !== 1 ? 'Plants' : 'Plant'}</Text>
             <Text style={styles.numberCount}>{props.countFinish}</Text>
           </View>
         </View>
         <View style={styles.wrapListTitle}>
-          <Text style={styles.listTitle}>Pledges</Text>
-          <View style={[common.flexRow, common.alignItemsCenter, common.pr10]}>
-            <ModalDropdown
-              style={styles.selectWrap}
-              textStyle={styles.selectText}
-              dropdownStyle={styles.selectDropdown}
-              dropdownTextStyle={styles.dropdownTextStyle}
-              options={['Active', 'Honored', 'Dishonored']}
-              renderRow={renderSelect}
-              // accessible={false}
-              renderSeparator={renderSeparator}
-              defaultValue={
-                props.status_name === 'FINISH' ? 'Honored' : props.status_name === 'FAIL' ? 'Dishonored' : 'Active'
-              }
-              onSelect={_goalOnValueChange}
-            />
-            <Icon name="down" type="antdesign" color={colors.silverTree} size={18} />
-          </View>
+          <Text style={styles.listTitle}>Plants</Text>
         </View>
       </View>
       <ListCommitmentComponent componentId={props.componentId} />

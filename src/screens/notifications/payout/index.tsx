@@ -210,7 +210,7 @@ class PayoutComponent extends React.Component<IProps> {
               </TouchableOpacity>
               <View style={styles.modalBody}>
                 <TitleComponent
-                  title={'Dishonored Pledge details'}
+                  title={'Dishonored Plant details'}
                   width={100}
                   styleContainer={common.alignSeftCenter}
                   styleUnderLine={{position: 'absolute', top: 60, left: 110}}
@@ -327,7 +327,7 @@ class PayoutComponent extends React.Component<IProps> {
                 <Text style={styles.userName}>{this.props.name}</Text> */}
                   <ButtonComponent
                     btnFull={false}
-                    text="See Pledge details"
+                    text="See Plant details"
                     onPress={this._goToTracker(this.props.item.cCommitmentModel)}
                   />
                 </View>

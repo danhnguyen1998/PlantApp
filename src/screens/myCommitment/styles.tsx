@@ -160,14 +160,14 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.bgColor,
   },
-  listNoPledge: {
+  listNoPlant: {
     paddingHorizontal: ms(15),
     flex: 1,
     backgroundColor: colors.bgColor,
     justifyContent: 'center',
     alignItems: 'center',
   },
-  textNoPledge: {
+  textNoPlant: {
     fontSize: ms(14),
     color: colors.darkGray,
     fontFamily: 'Poppins',

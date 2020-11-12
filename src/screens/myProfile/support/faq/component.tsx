@@ -27,48 +27,48 @@ export default function SupportFAQComponent(props: IProps) {
   const SECTIONS = [
     {
       key: 0,
-      title: 'How do you verify I\'ve honored my pledge?',
+      title: 'How do you verify I\'ve honored my Plant?',
       content:
-        'All pledges in pledger are automatically validated via the health tracking app in IOS. Because of this, it\'s imperative that you check and double check that you have successfully connected apple health to Pledger',
+        'All Plants in Plantr are automatically validated via the health tracking app in IOS. Because of this, it\'s imperative that you check and double check that you have successfully connected apple health to Plantr',
     },
     {
       key: 1,
-      title: 'What happens if I dishonor my pledge?',
+      title: 'What happens if I dishonor my Plant?',
       content:
-        'If you’ve made a financial pledge you will be automatically charged the amount you chose to stake, and a failure notice will go in your pledge history. If you have chosen not to stake financially, you will only receive the failure notice in your pledge history.',
+        'If you’ve made a financial Plant you will be automatically charged the amount you chose to stake, and a failure notice will go in your Plant history. If you have chosen not to stake financially, you will only receive the failure notice in your Plant history.',
     },
     {
       key: 2,
-      title: 'Can I get a refund if I dishonor my pledge?',
+      title: 'Can I get a refund if I dishonor my Plant?',
       content:
-        'In 99% of cases there are no refunds. We are pledged to help you become the best version of yourself, refunds on pledges would degrade the effectiveness of the app. If, in the rare occasion a bug within the app prevents you from honoring your goal, please submit proof to our support team and we will take care of it.',
+        'In 99% of cases there are no refunds. We are Plantd to help you become the best version of yourself, refunds on Plants would degrade the effectiveness of the app. If, in the rare occasion a bug within the app prevents you from honoring your goal, please submit proof to our support team and we will take care of it.',
     },
     {
       key: 3,
-      title: 'Can I edit or delete a pledge once it\'s live?',
+      title: 'Can I edit or delete a Plant once it\'s live?',
       content:
-        'You may not edit or delete a pledge once the start date has begun. Until then, you are free to make any changes to your pledges.',
+        'You may not edit or delete a Plant once the start date has begun. Until then, you are free to make any changes to your Plants.',
     },
     {
       key: 4,
-      title: 'What happens if I dishonor my pledge and my buddy never claims the money?',
+      title: 'What happens if I dishonor my Plant and my buddy never claims the money?',
       content:
-        'Your pledger has 30 days to claim their money. If your pledger does not claim their money in 30 days the money will be forfeited to Pledger.',
+        'Your Plantr has 30 days to claim their money. If your Plantr does not claim their money in 30 days the money will be forfeited to Plantr.',
     },
     {
       key: 5,
       title: 'What happens if I forget to check into a location?',
-      content: 'As this is a user error, you would dishonor your pledge.',
+      content: 'As this is a user error, you would dishonor your Plant.',
     },
     {
       key: 6,
-      title: 'When does the pledge officially start?',
-      content: 'You choose the start date of your pledge while creating your pledge goal',
+      title: 'When does the Plant officially start?',
+      content: 'You choose the start date of your Plant while creating your Plant goal',
     },
     {
       key: 7,
       title:
-        'Why do I see a $1 charge on my billing statement for BetterBuddy even though I have been successful in my Pledge?',
+        'Why do I see a $1 charge on my billing statement for BetterBuddy even though I have been successful in my Plant?',
       content:
         'This is done to certify that your credit card is working, and to prevent fraud. After 30 days we will return the $1 to your bank.',
     },
@@ -79,13 +79,13 @@ export default function SupportFAQComponent(props: IProps) {
     },
     {
       key: 9,
-      title: 'Can I change my pledge buddy once the contract has started?',
+      title: 'Can I change my Plant buddy once the contract has started?',
       content:
         'For the time being, we do not allow this. If this becomes a highly request feature we may change it in the future.',
     },
     {
       key: 10,
-      title: 'How does Pledger Keep Track of My Progress?',
+      title: 'How does Plantr Keep Track of My Progress?',
       content:
         'In order to track how long you\'ve biked or how many calories you\'ve burned, it\'s highly recommended, and in some cases necessary to download a 3rd party app or use a wearable device.',
     },
@@ -148,7 +148,7 @@ export default function SupportFAQComponent(props: IProps) {
               {/* <Image style={[styles.listImage]} source={require('@src/assets/images/ellipse.png')} /> */}
               <Text style={[styles.contentText, {marginLeft: ms(15)}]}>
                 (Running: Note: this is only for burning calories. You must use our in house built distance run distance
-                tracking to track your running Pledge Data)
+                tracking to track your running Plant Data)
               </Text>
             </View>
             <View style={{flexDirection: 'row', alignItems: 'center'}}>
@@ -171,8 +171,8 @@ export default function SupportFAQComponent(props: IProps) {
             </View>
             {/* <Image style={styles.listImage} source={require('@src/assets/images/ellipse.png')} /> */}
             <Text style={[styles.contentText, {marginTop: vs(20)}]}>
-              There are tons of apps and wearable to effectively track the above data for your Pledge. As long as it
-              works with Apple Health, it will work with Pledger.
+              There are tons of apps and wearable to effectively track the above data for your Plant. As long as it
+              works with Apple Health, it will work with Plantr.
             </Text>
           </>
         ) : null}
