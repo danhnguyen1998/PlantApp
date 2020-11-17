@@ -3,5 +3,8 @@ interface IProps {
   item: any;
   username: string;
 }
+interface IState {
+  listImages: any;
+}
 
-export {IProps};
+export {IProps, IState};

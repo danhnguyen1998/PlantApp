@@ -155,31 +155,6 @@ export default function TAndCComponent(props: IProps) {
             Your use of the Plantr website does not grant you the right or license to replicate or otherwise use any
             Plantr or third-party trademarks.
           </Text>
-          {/* <Text style={styles.title}>Copyright Protection Clause</Text>
-          <Text style={styles.content}>
-            All the materials showed and contained in the website, which may without limitation include all reports,
-            delineations, pictures, representation, photos, materials, articles, information, or other data as well as
-            all and any software programs provided via the website, are trademarked and copyrighted.
-          </Text>
-          <Text style={styles.contentSub}>
-            With no exception, they are all protected by intellectual property laws, except we have explicitly indicated
-            so to the contrary.
-          </Text>
-          <Text style={styles.contentSub}>
-            All interests, titles, and rights relating to the content are owned, controlled by, or licensed to Plant.
-            You hereby accept that the website and its contents are designed and presented by us in a unique format and
-            appearance, and users are allowed to view the website and its contents and print or download one copy of the
-            website, or specific parts of the website, for personal use only.
-          </Text>
-          <Text style={styles.contentSub}>
-            Plant, www.Plant.com, its logo, service marks, trademarks, and graphics used as it relates to this website
-            are registered trademarks of Plant. Other logos, service marks, trademarks, and graphics used in and on
-            this website may be the trademarks of other third parties.
-          </Text>
-          <Text style={styles.contentSub}>
-            Your use of the Plant website does not grant you the right or license to replicate or otherwise use any
-            Plant or third-party trademarks.
-          </Text> */}
           <Text style={styles.title}>Copyright Protection Clause</Text>
           <Text style={styles.content}>
             Without obtaining the written consent of a copyright owner, it is important that you do not, in any way,

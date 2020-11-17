@@ -32,14 +32,14 @@ Navigation.events().registerAppLaunchedListener(() => {
         });
 
         GoogleSignin.configure({
-          scopes: ['https://www.googleapis.com/auth/drive'],
+          scopes: ['https://www.googleapis.com/auth/drive', 'https://www.googleapis.com/auth/drive.file'],
         });
-        const token = await AsyncStorage.getItem(System.TOKEN);
-        if (token) {
-          rootMyCommitmentScreen();
-        } else {
+        // const token = await AsyncStorage.getItem(System.TOKEN);
+        // if (token) {
+        //   rootMyCommitmentScreen();
+        // } else {
           rootLoginScreen();
-        }
+        // }
       } catch (error) {
         await store.dispatch(logOutAction());
         rootLoginScreen();

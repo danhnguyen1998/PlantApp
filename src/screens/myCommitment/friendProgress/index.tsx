@@ -3,119 +3,147 @@ import {offLoadingAction, onLoadingAction} from '@src/containers/redux/common/ac
 import {colors, common} from '@src/styles';
 import {ms} from '@src/styles/scalingUtils';
 import React from 'react';
-import {Dimensions, Text, TouchableOpacity, View, ScrollView} from 'react-native';
+import {Dimensions, Text, TouchableOpacity, View, ScrollView, FlatList} from 'react-native';
 import {AnimatedCircularProgress} from 'react-native-circular-progress';
 import {Header} from 'react-native-elements';
 import {Navigation} from 'react-native-navigation';
 import Icon5 from 'react-native-vector-icons/FontAwesome5';
 import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
-import {IProps} from './propState';
+import {IProps, IState} from './propState';
 import styles from './styles';
+import {GoogleSignin} from '@react-native-community/google-signin';
+import GDrive from 'react-native-google-drive-api-wrapper';
+import Icon from 'react-native-vector-icons/Ionicons';
+import ImagePicker, {Image as IMG} from 'react-native-image-crop-picker';
+import moment from 'moment';
+import ActionSheet from 'react-native-actionsheet';
+import InputComponent from '@src/containers/components/input';
+var RNFS = require('react-native-fs');
 
 class FriendProgressComponent extends React.Component<IProps> {
+  ActionSheetSelectPhoto: ActionSheet = null;
+
+  state: IState = {
+    listImages: [],
+  };
   _goBack = () => Navigation.pop(this.props.componentId);
-  _renderValueText = () => {
-    if (this.props.item) {
-      if (this.props.item.commitment_type === 'DAILY_WEEKLY') {
-        return this.props.item.commitment_target_time_unit.toLowerCase();
-      } else {
-        switch (this.props.item.goal_id) {
-          case 1:
-            return 'calories';
-          case 2:
-            return this.props.item.unit;
-          case 3:
-            return this.props.item.unit;
-          case 4:
-            return 'steps';
-          case 5:
-            return 'times';
-          default:
-            return '';
-        }
-      }
+
+  async componentDidMount() {
+    this.loadImage();
+  }
+
+  loadImage = async () => {
+    const token = (await GoogleSignin.getTokens()).accessToken;
+    GDrive.setAccessToken(token);
+    GDrive.init();
+    // const folderId = await GDrive.files.safeCreateFolder({
+    //   name: 'PlantApp',
+    //   parents: [this.props.item.name],
+    // });
+    let query = `'${this.props.item.id}' in parents`;
+
+    (GDrive as any).files
+      .list({
+        q: query,
+        // q: "type: image",
+      })
+      .then((res) => {
+        res.json();
+      })
+      .then((data) => {
+        this.setState((state) => ({
+          ...state,
+          listImages: data.files,
+        }));
+      }) //data.files is the array containing list of files
+      .catch((err) => console.log(err));
+  };
+
+  uploadImage = (index) => {
+    switch (index) {
+      case 0:
+        ImagePicker.openCamera({
+          compressImageQuality: 0.1,
+        }).then(async (image) => {
+          RNFS.readFile((image as IMG).path, 'base64').then((res) => {
+            GDrive.files
+              .createFileMultipart(
+                res,
+                (image as IMG).mime || 'image/jpeg',
+                {
+                  parents: [this.props.item.id], //or any path
+                  name: (image as IMG).filename || moment(new Date()).format('hmmssMMDDYY') + '.jpg',
+                },
+                true,
+              )
+              .then((response) => {
+                this.loadImage();
+                console.log(response, 'r');
+              }).catch = (err) => {
+              console.log('error', err);
+            };
+          });
+        });
+        break;
+      case 1:
+        ImagePicker.openPicker({
+          multiple: false,
+          mediaType: 'photo',
+          // compressImageQuality: 0.1,
+        })
+          .then(async (image) => {
+            RNFS.readFile((image as IMG).path, 'base64').then((res) => {
+              GDrive.files
+                .createFileMultipart(
+                  res,
+                  (image as IMG).mime || 'image/jpeg',
+                  {
+                    parents: [this.props.item.id], //or any path
+                    name: (image as IMG).filename || moment(new Date()).format('hmmssMMDDYY') + '.jpg',
+                  },
+                  true,
+                )
+                .then((response) => {
+                  this.loadImage();
+                  console.log(response, 'r');
+                }).catch = (err) => {
+                console.log('error', err);
+              };
+            });
+          })
+          .catch(() => {
+            return;
+          });
+        break;
+
+      default:
+        break;
     }
   };
 
-  _renderValueSingularText = () => {
-    if (this.props.item) {
-      if (this.props.item.commitment_type === 'DAILY_WEEKLY') {
-        return this.props.item.commitment_target_time_unit.toLowerCase();
-      } else {
-        switch (this.props.item.goal_id) {
-          case 1:
-            return 'calories';
-          case 2:
-            return this.props.item.unit.slice(0, this.props.item.unit.length - 1);
-          case 3:
-            return this.props.item.unit.slice(0, this.props.item.unit.length - 1);
-          case 4:
-            return 'step';
-          case 5:
-            return 'time';
-          default:
-            return '';
-        }
-      }
-    }
+  onPressAddPhotoBtn = () => {
+    (this.ActionSheetSelectPhoto as any).show();
   };
 
-  _renderValueTextStandard = () => {
-    if (this.props.item) {
-      switch (this.props.item.goal_id) {
-        case 1:
-          return 'calories';
-        case 2:
-          return this.props.item.unit;
-        case 3:
-          return this.props.item.unit;
-        case 4:
-          return 'steps';
-        case 5:
-          return 'times';
-        default:
-          return '';
-      }
-    }
+  downloadImage = (item) => {
+    // GDrive.files.download(item.id, downloadFileOptions, queryParams);
   };
 
-  _renderValueSingularTextStandard = () => {
-    if (this.props.item) {
-      switch (this.props.item.goal_id) {
-        case 1:
-          return 'calories';
-        case 2:
-          return this.props.item.unit.slice(0, this.props.item.unit.length - 1);
-        case 3:
-          return this.props.item.unit.slice(0, this.props.item.unit.length - 1);
-        case 4:
-          return 'step';
-        case 5:
-          return 'time';
-        default:
-          return '';
-      }
-    }
-  };
-
-  _renderGoalText = () => {
-    if (this.props.item) {
-      switch (this.props.item.goal_id) {
-        case 1:
-          return 'burn';
-        case 2:
-          return 'run';
-        case 3:
-          return 'bike';
-        case 4:
-          return 'walk';
-        case 5:
-          return 'visit';
-        default:
-          return '';
-      }
-    }
+  _renderItem = ({item, index}) => {
+    return (
+      <TouchableOpacity>
+        <View style={[styles.item, common.flexColumn]} key={`item_${index}`}>
+          <View style={styles.itemTop}>
+            <View style={styles.itemTopLeft}>
+              <View style={styles.wrapItemTitle}>
+                <Text style={styles.itemTitle}>{item ? item.name : null}</Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
   };
 
   render() {
@@ -127,150 +155,37 @@ class FriendProgressComponent extends React.Component<IProps> {
               <Icon5 name="chevron-left" size={ms(15)} />
             </TouchableOpacity>
           }
-          centerComponent={<Text style={common.headerTitle}>Commitment details</Text>}
+          centerComponent={<Text style={common.headerTitle}>{this.props.item ? this.props.item.name : null}</Text>}
         />
         <ScrollView style={common.flex_1}>
-          <View style={common.container}>
-            <View style={styles.boxContent}>
-              <View style={styles.viewTitle}>
-                <TitleComponent
-                  title={`${this.props.username}'s commitment progress`}
-                  width={90}
-                  styleContainer={common.alignSeftCenter}
-                  styleUnderLine={{top: -60}}
-                  styleTitle={common.textCenter}
-                />
-                {/* <Text style={styles.title}>
-                  {this.props.item.goal_id === 1
-                    ? 'Burn Calories'
-                    : this.props.item.goal_id === 2
-                    ? 'Run'
-                    : this.props.item.goal_id === 4
-                    ? 'Step'
-                    : this.props.item.goal_id === 5
-                    ? 'Check into a location'
-                    : 'Biking'}{' '}
-                </Text> */}
-                <Text style={common.textCenter}>
-                  {this.props.item.goal_id === 1
-                    ? 'Burning'
-                    : this.props.item.goal_id === 2
-                    ? 'Running'
-                    : this.props.item.goal_id === 4
-                    ? 'Walking'
-                    : this.props.item.goal_id === 5
-                    ? 'Visiting'
-                    : 'Biking'}{' '}
-                  {this.props.item.unit === 'meters'
-                    ? (parseFloat(this.props.item.commitment_target) / 0.000621371192).toFixed(0)
-                    : parseFloat(this.props.item.commitment_target).toFixed(0)}{' '}
-                  {this.props.item.commitment_target > 1
-                    ? this._renderValueTextStandard()
-                    : this._renderValueSingularTextStandard()}{' '}
-                  for the next {this.props.item.commitment_target_time}{' '}
-                  {this.props.item.commitment_target_time > 1
-                    ? this.props.item.commitment_target_time_unit.toLowerCase()
-                    : this.props.item.commitment_target_time_unit
-                        .toLowerCase()
-                        .slice(0, this.props.item.commitment_target_time_unit.length - 1)}
-                </Text>
-                {/* <View style={styles.viewCircleFirst}> */}
-                <View style={styles.viewCircleSecond}>
-                  <AnimatedCircularProgress
-                    size={Dimensions.get('screen').width - ms(150)}
-                    width={ms(20)}
-                    fill={
-                      this.props.item
-                        ? this.props.item.commitment_type === 'STANDARD'
-                          ? this.props.item.commitment_process > this.props.item.commitment_target
-                            ? 100
-                            : (this.props.item.commitment_process / this.props.item.commitment_target) * 100
-                          : parseFloat(
-                              ((this.props.item.count_finish / this.props.item.commitment_target_time) * 100).toFixed(
-                                2,
-                              ),
-                            )
-                        : 0
-                    }
-                    arcSweepAngle={360}
-                    rotation={0}
-                    tintColor="#BBE7DF"
-                    backgroundColor="rgba(0, 0, 0, 0.06)"
-                    backgroundWidth={ms(20)}
-                    lineCap="round"
-                    style={styles.AnimatedCircularProgress}
-                  />
-                  <View style={styles.viewTextFill}>
-                    <Text style={styles.unitText}>
-                      {this.props.item && parseInt(this.props.item.commitment_target.toString()) > 1
-                        ? this._renderValueText()
-                        : this._renderValueSingularText()}
-                    </Text>
-                    <Text style={styles.goalText}>
-                      {this.props.item
-                        ? this.props.item.commitment_type === 'STANDARD'
-                          ? this.props.item.commitment_process > this.props.item.commitment_target
-                            ? parseFloat(this.props.item.commitment_target).toFixed(0)
-                            : parseInt(this.props.item.commitment_process.toString()) ===
-                              this.props.item.commitment_process
-                            ? this.props.item.commitment_process
-                            : this.props.item.commitment_process.toFixed(2)
-                          : this.props.item.count_finish
-                        : 0}
-                    </Text>
-                    <Text style={styles.remainingText}>
-                      Remaining (
-                      {this.props.item
-                        ? this.props.item.commitment_type === 'STANDARD'
-                          ? this.props.item.commitment_process > this.props.item.commitment_target
-                            ? 100
-                            : (
-                                100 -
-                                parseFloat(
-                                  (
-                                    (this.props.item.commitment_process / this.props.item.commitment_target) *
-                                    100
-                                  ).toFixed(2),
-                                )
-                              ).toFixed(0)
-                          : 100 -
-                            parseFloat(
-                              ((this.props.item.count_finish / this.props.item.commitment_target_time) * 100).toFixed(
-                                2,
-                              ),
-                            )
-                        : 0}
-                      %)
-                    </Text>
-                    {/* <Text style={common.mt10}>Goal</Text>
-                    <Text style={styles.fontBold}>
-                      {this.props.item
-                        ? this.props.item.commitment_type === 'STANDARD'
-                          ? this.props.item.unit === 'meters'
-                            ? parseFloat(this.props.item.commitment_target) / 0.000621371192
-                            : parseFloat(this.props.item.commitment_target).toFixed(0)
-                          : this.props.item.commitment_target_time
-                        : null}{' '}
-                      {this.props.item && this.props.item.commitment_target > 1
-                        ? this._renderValueText()
-                        : this._renderValueSingularText()}
-                    </Text> */}
-
-                    {/* {this.props.item ? null : this.props.addCommitmentReducer.commitment_type === 'DAILY_WEEKLY' ? (
-                  <Text>
-                    per{' '}
-                    {this.props.addCommitmentReducer.target_time_unit
-                      .toLowerCase()
-                      .slice(0, this.props.addCommitmentReducer.target_time_unit.length - 1)}
-                  </Text>
-                ) : null} */}
-                    {/* </View> */}
-                  </View>
-                </View>
-              </View>
+          {this.state.listImages.length > 0 ? (
+            <FlatList
+              data={this.state.listImages}
+              renderItem={this._renderItem}
+              keyExtractor={(item) => `${item.id}`}
+              // onEndReachedThreshold={0.5}
+              // onEndReached={handleLoadMore}
+              style={styles.list}
+              // refreshControl={<RefreshControl refreshing={state.refreshing} onRefresh={onRefresh} />}
+            />
+          ) : (
+            <View style={styles.listNoPlant}>
+              <Text style={styles.textNoPlant}>No images</Text>
             </View>
-          </View>
+          )}
         </ScrollView>
+        <TouchableOpacity style={styles.btnCenter} onPress={this.onPressAddPhotoBtn}>
+          <Icon name="ios-add" size={68} color={colors.white} style={{alignItems: 'center'}} />
+        </TouchableOpacity>
+        <ActionSheet
+          ref={(o) => (this.ActionSheetSelectPhoto = o)}
+          title={'Select photo'}
+          options={['Take Photo...', 'Choose from Library...', 'Cancel']}
+          cancelButtonIndex={2}
+          destructiveButtonIndex={1}
+          onPress={this.uploadImage}
+          on={true}
+        />
       </>
     );
   }

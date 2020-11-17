@@ -29,8 +29,6 @@ function* appToBackgroundWatcher() {
   yield takeLatest(appToBackgroundAction, function* () {
     try {
       yield put(onLoadingAction());
-      yield BackgroundTimer.stopBackgroundTimer();
-      yield put(toggleUpdateTimerAction(false));
     } catch (error) {
       if (error.message === 'InvalidToken') {
         yield put(invalidTokenAction());
@@ -46,33 +44,9 @@ function* appToBackgroundWatcher() {
 function* backgroundToAppWatcher() {
   yield takeLatest(backgroundToAppAction, function* () {
     try {
-      // yield put(onLoadingAction());
       const token = yield AsyncStorage.getItem(System.TOKEN);
-      // const componentId = yield select((state: RootState) => state.common.componentId);
       if (token) {
-        const account = yield call(getAccountInfor);
-        if (account) {
-          yield put(setAccountAction(account));
-          // start timer when one commitment running
-          const backgroundTimer = yield AsyncStorage.getItem(System.BACKGROUND_TIMER);
-          const bgTimer = JSON.parse(backgroundTimer);
-          if (bgTimer) {
-            const diffTime = moment.duration(moment().diff(moment(bgTimer.timer)));
-            yield put(toggleUpdateTimerAction(true, diffTime.minutes(), diffTime.seconds()));
-          }
-
-          // end
-          // reload commitments
-          // if (componentId === APP_MY_COMMITMENT_SCREEN) {
-          //   const currentStatus = yield select((state: RootState) => state.screens.myCommitments.list);
-          //   if (!currentStatus.loadList) {
-          //     yield put(setLoadCommitmentAction(true, currentStatus.pageNumber));
-          //   }
-          // }
-          //end
-        } else {
-          yield put(logOutAction());
-        }
+        
       }
     } catch (error) {
       if (error.message === 'InvalidToken') {

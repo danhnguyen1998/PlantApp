@@ -29,7 +29,7 @@ class NotificationComponent extends React.Component<IProps> {
   };
 
   componentDidMount() {
-    this.props.getListNotificationsAction();
+    // this.props.getListNotificationsAction();
   }
 
   _goPayout = (item, str2) => () => {

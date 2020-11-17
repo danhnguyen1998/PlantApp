@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   itemLeft: {
     paddingRight: ms(20),
     borderRightColor: colors.grey,
-    borderRightWidth: ms(1),
+    // borderRightWidth: ms(1),
     flex: 1,
   },
   itemRight: {
@@ -250,6 +250,58 @@ const styles = StyleSheet.create({
     height: ms(15),
     position: 'absolute',
     top: ms(20),
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: colors.greyOpacity,
+    justifyContent: 'center',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    marginHorizontal: ms(43),
+    borderRadius: 16,
+    shadowColor: colors.dark,
+    shadowOffset: {
+      width: 0,
+      height: ms(2),
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    flexDirection: 'column',
+    padding: ms(10),
+  },
+  modalTile: {
+    fontFamily: 'Poppins',
+    fontSize: ms(15),
+    lineHeight: ms(22),
+    textAlign: 'center',
+    color: colors.darkMain,
+    // marginHorizontal: ms(47),
+    marginBottom: ms(5),
+  },
+  modalBtnClose: {
+    alignItems: 'flex-end',
+    padding: ms(5),
+  },
+  modalGroupButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginHorizontal: ms(5),
+    // marginVertical: ms(5),
+  },
+  btnCenter: {
+    position: 'absolute',
+    zIndex: 1,
+    bottom: 75,
+    borderRadius: ms(68),
+    height: ms(68),
+    width: ms(68),
+    right: ms(15),
+    backgroundColor: colors.silverTree,
+  },
+  iconAdd: {
+    alignSelf: 'center',
   },
 });
 

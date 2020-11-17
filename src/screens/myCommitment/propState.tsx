@@ -17,8 +17,9 @@ interface IDispatchToProps {
 }
 
 interface IState {
-  status: string;
-  status_id: number;
+  listFolder: any,
+  showModalName: boolean;
+  name: string;
 }
 
 export {IProps, IState};

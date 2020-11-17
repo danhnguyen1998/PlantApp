@@ -154,6 +154,96 @@ const styles = StyleSheet.create({
     lineHeight: ms(18),
     fontFamily: 'Poppins-Regular',
   },
+  btnCenter: {
+    position: 'absolute',
+    zIndex: 1,
+    bottom: 75,
+    borderRadius: ms(68),
+    height: ms(68),
+    width: ms(68),
+    right: ms(15),
+    backgroundColor: colors.silverTree,
+  },
+  listNoPlant: {
+    paddingHorizontal: ms(15),
+    flex: 1,
+    backgroundColor: colors.bgColor,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textNoPlant: {
+    fontSize: ms(14),
+    color: colors.darkGray,
+    fontFamily: 'Poppins',
+  },
+  list: {
+    paddingHorizontal: ms(15),
+    flex: 1,
+    backgroundColor: colors.bgColor,
+  },
+  itemTop: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    // borderBottomColor: '#E3E0DC',
+    // borderBottomWidth: ms(1),
+    // borderStyle: 'dashed',
+    paddingBottom: ms(10),
+  },
+
+  borderDashed: {
+    borderColor: '#C0C5CF',
+    borderWidth: ms(2),
+    borderStyle: 'dotted',
+    width: ms(285),
+    borderRadius: 2,
+  },
+
+  itemBottom: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    paddingTop: ms(20),
+  },
+  itemTopLeft: {
+    flex: 1,
+    paddingRight: ms(10),
+  },
+  itemTopRight: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  wrapItemTitle: {
+    flexDirection: 'row',
+    // flex: 1,
+    paddingRight: ms(20),
+  },
+  itemTitle: {
+    fontFamily: 'Poppins-Bold',
+    fontSize: ms(15),
+    lineHeight: ms(19),
+    color: colors.darkMain,
+  },
+  imgTitle: {
+    width: ms(16),
+    height: ms(16),
+  },
+  item: {
+    flexDirection: 'row',
+    // alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: ms(20),
+    borderRadius: 16,
+    backgroundColor: colors.white,
+    shadowColor: colors.dark,
+    shadowOffset: {
+      width: ms(2),
+      height: ms(4),
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    marginTop: ms(16),
+  },
 });
 
 export default styles;

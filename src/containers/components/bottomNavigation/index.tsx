@@ -70,12 +70,20 @@ export default function BottomTabNavigation(props: IProps) {
     },
   ];
 
-  const onPressAddPhotoBtn = () => {
+  const onPressAddPhotoBtn = async () => {
     setState((state: IState) => ({
       ...state,
       showModalName: !state.showModalName,
     }));
-    ActionSheetSelectPhoto.show();
+    // ActionSheetSelectPhoto.show();
+    const folderId = await GDrive.files.safeCreateFolder({
+      name: 'PlantApp',
+      parents: ['root'],
+    });
+    await GDrive.files.safeCreateFolder({
+      name: state.name,
+      parents: [folderId],
+    });
   };
 
   const showModalName = () => {
@@ -182,20 +190,17 @@ export default function BottomTabNavigation(props: IProps) {
     />
   );
 
-  const _onChangeText = (evt: any) => () => {
+  const _onChangeText = () => (evt: any) => {
     setState((state: IState) => ({...state, name: evt}));
   };
 
   return (
     <Fragment>
-      {/* {props.showAddCommitments ? (
-        <TouchableOpacity style={styles.btnCenter} onPress={_addCommitmentScreen}>
+      {/* {props.showAddCommitments && (
+        <TouchableOpacity style={styles.btnCenter} onPress={showModalName}>
           <Icon name="ios-add" size={ms(68)} color={colors.white} style={styles.iconAdd} />
         </TouchableOpacity>
-      ) : null} */}
-      <TouchableOpacity style={styles.btnCenter} onPress={showModalName}>
-        <Icon name="ios-add" size={ms(68)} color={colors.white} style={styles.iconAdd} />
-      </TouchableOpacity>
+      )} */}
       <BottomNavigation
         activeTab={props.activeTab}
         renderTab={_renderTab}
@@ -224,7 +229,7 @@ export default function BottomTabNavigation(props: IProps) {
             <View style={styles.modalGroupButton}>
               <InputComponent
                 placeholder="Name of plant"
-                onChangeText={_onChangeText('showModalName')}
+                onChangeText={_onChangeText('name')}
                 // secureTextEntry={true}
                 style={{width: 188, height: 49}}
               />

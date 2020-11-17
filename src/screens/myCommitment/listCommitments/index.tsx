@@ -7,22 +7,15 @@ import {
   onLoadingAction,
   onUpdateDataAction,
 } from '@src/containers/redux/common/actions';
-import {timeStartAyncs} from '@src/screens/myCommitment/services';
 import {colors, common} from '@src/styles';
 import {ms} from '@src/styles/scalingUtils';
-import {appleHealthKit, location, permission} from '@src/utils/index';
 import moment from 'moment';
 import React, {FC, useEffect, useState} from 'react';
-import {Alert, FlatList, RefreshControl, Text, TouchableOpacity, View} from 'react-native';
-import BackgroundTimer from 'react-native-background-timer';
+import {FlatList, RefreshControl, Text, TouchableOpacity, View} from 'react-native';
 import Dash from 'react-native-dash';
 import ProgressCircle from 'react-native-progress-circle';
 import {useDispatch, useSelector} from 'react-redux';
-import {addCommitmentFinishScreen} from '../addCommitment/finishOnBoarding/navigation';
-import {addCommitmentMapCheckInScreen} from '../mapCheckin/navigation';
 import {getListCommitmentAction, setListCommitmentAction, setLoadCommitmentAction} from '../redux/actions';
-import {getAccountCommitments} from '../services';
-import {addCommitmentStartRunningScreen} from '../startRunning/navigation';
 import styles from '../styles';
 import {IListData, IProps, IState} from './propState';
 
@@ -62,165 +55,25 @@ export const ListCommitmentComponent: FC<IProps> = (props: IProps) => {
   });
 
   useEffect(() => {
-    function runTimer() {
-      if (props.isUpdated === true && props.listData.length > 0) {
-        BackgroundTimer.runBackgroundTimer(async () => {
-          const timeStart = await timeStartAyncs();
-          const result = await appleHealthKit.getDataHealth(timeStart.data);
-          let dataBurnCalories = 0;
-          let dataBiking = 0;
-          // let dataRunning = 0;
-          let dataStep = 0;
+   
+  },);
 
-          if (result.dataBurnCalories.length > 0) {
-            dataBurnCalories = dataBurnCalories + result.dataBurnCalories[result.dataBurnCalories.length - 1].value;
-          }
-          if (result.dataBiking.length > 0) {
-            dataBiking = dataBiking + result.dataBiking[result.dataBiking.length - 1].value;
-          }
-          // if (result.dataRunning.length > 0) {
-          //   dataRunning = dataRunning + result.dataRunning[result.dataRunning.length - 1].value;
-          // }
-          if (result.dataStep.length > 0) {
-            dataStep = dataStep + result.dataStep[result.dataStep.length - 1].value;
-          }
-
-          props.listData.map(async (x) => {
-            if (x.commitment_type === 'DAILY_WEEKLY') {
-              if (x.goal_id === 1) {
-                x.commitment_details_process = x.commitment_details_process + dataBurnCalories;
-              }
-              // if (x.goal_id === 2) {
-              //   x.commitment_details_process = x.commitment_details_process + dataRunning;
-              // }
-              if (x.goal_id === 3) {
-                x.commitment_details_process = x.commitment_details_process + dataBiking;
-              }
-              if (x.goal_id === 4) {
-                x.commitment_details_process = x.commitment_details_process + dataStep;
-              }
-            } else {
-              if (x.goal_id === 1) {
-                x.commitment_process = x.commitment_process + dataBurnCalories;
-              }
-              // if (x.goal_id === 2) {
-              //   x.commitment_process = x.commitment_process + dataRunning;
-              // }
-              if (x.goal_id === 3) {
-                x.commitment_process = x.commitment_process + dataBiking;
-              }
-              if (x.goal_id === 4) {
-                x.commitment_process = x.commitment_process + dataStep;
-              }
-              // if ((x.commitment_process / parseFloat(x.commitment_target)) * 100 >= 50) {
-              //   await createCloserNotification(x.id);
-              // }
-            }
-          });
-
-          props.setListCommitmentAction(
-            props.countActive,
-            props.countFinish,
-            props.listData,
-            props.pageNumber,
-            props.loadList,
-          );
-        }, 900000);
-        props.offUpdateDataAction();
-      }
-    }
-
-    runTimer();
-
-    async function stopTimer() {
-      await BackgroundTimer.stopBackgroundTimer();
-    }
-
-    if (props.loadList) {
-      stopTimer();
-      props.getListCommitmentAction(props.pageNumber, props.status_name);
-      props.onUpdateDataAction();
-    }
-  }, [props.loadList]);
-
-  useEffect(() => {
-    if (props.status_name && props.status.loading) {
-      getCommitments();
-    }
-  }, [props.status_name]);
-
-  const getCommitments = async () => {
-    if (flatListRef) {
-      flatListRef.current?.scrollToOffset({animated: true, offset: 0});
-      // props.onLoadingAction();
-      const result = await getAccountCommitments(1, system.PAGE_SIZE, props.status_name);
-      // if (props.status_name === 'ACTIVE') {
-      //   if (result) {
-      //     result.list_commitments.map(async (item) => {
-      //       if (
-      //         item.commitment_type === 'STANDARD' &&
-      //         (item.commitment_process / parseFloat(item.commitment_target)) * 100 >= 50
-      //       ) {
-      //         await createCloserNotification(item.id);
-      //       } else if (
-      //         item.commitment_type === 'DAILY_WEEKLY' &&
-      //         (item.count_finish / item.commitment_target_time) * 100 >= 50
-      //       ) {
-      //         await createCloserNotification(item.id);
-      //       }
-      //     });
-      //   }
-      // }
-      props.status.loading = false;
-      // props.offLoadingAction();
-      props.setListCommitmentAction(props.countActive, props.countFinish, result.list_commitments, 1, false);
-    }
-  };
+  
 
   const _onPressLocationCommitmentDetail = (item) => async () => {
-    if (item.commitment_process < parseInt(item.commitment_target)) {
-      permission.permissionMap();
-      const getLocation = await location.getCurrentPosition();
-      const region = {
-        latitude: getLocation.coords.latitude,
-        longitude: getLocation.coords.longitude,
-        latitudeDelta: 0.003,
-        longitudeDelta: 0.003,
-      };
-      addCommitmentMapCheckInScreen(props.componentId, {region, item});
-    } else {
-      Alert.alert('Warning', 'The commitment has been checked in completely!');
-    }
+    
   };
 
   const _onPressCommitmentDetail = (item) => async () => {
-    if (item.goal_id === 2) {
-      addCommitmentStartRunningScreen(props.componentId, {item});
-    } else {
-      addCommitmentFinishScreen(props.componentId, {item});
-    }
+    
   };
 
   const handleLoadMore = () => {
-    if (props.listData?.length < props.countActive + props.countFinish) {
-      props.setLoadCommitmentAction(true, props.pageNumber + 1);
-    }
+   
   };
 
   const onRefresh = async () => {
-    setState((state: IState) => ({
-      ...state,
-      refreshing: true,
-    }));
-
-    const result = await getAccountCommitments(1, system.PAGE_SIZE, props.status_name);
-    props.setListCommitmentAction(props.countActive, props.countFinish, result.list_commitments, 1, false);
-    if (result) {
-      setState((state: IState) => ({
-        ...state,
-        refreshing: false,
-      }));
-    }
+    
   };
 
   const _renderItem = ({item, index}) => {
@@ -280,10 +133,6 @@ export const ListCommitmentComponent: FC<IProps> = (props: IProps) => {
             <View style={styles.itemTopLeft}>
               <View style={styles.wrapItemTitle}>
                 <Text style={styles.itemTitle}>{title}</Text>
-                {/* <View style={[common.flexRow, common.ml10]}>
-                  <Image style={[styles.imgTitle, common.pr3]} source={goalImg} />
-                  <Image style={styles.imgTitle} source={subGoalImg} />
-                </View> */}
               </View>
               <Text style={styles.itemTextDetails}>
                 {item.unit === 'meters'

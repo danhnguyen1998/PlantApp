@@ -45,21 +45,6 @@ class MyProfileComponent extends React.Component<IProps> {
       onPress: () => myProfileInviteFriendScreen(this.props.componentId),
     },
     {
-      title: 'Personal Data',
-      icon: 'cog',
-      onPress: () => myProfilePersonalDataScreen(this.props.componentId),
-    },
-    {
-      title: 'Payment',
-      icon: 'cc-stripe',
-      onPress: () => myProfilePaymentScreen(this.props.componentId),
-    },
-    {
-      title: 'Connect to Apple Health',
-      icon: 'apple',
-      onPress: () => myProfileConnectHealthkitScreen(this.props.componentId),
-    },
-    {
       title: 'Support',
       icon: 'question-circle',
       onPress: () => myProfileSupportScreen(this.props.componentId),
