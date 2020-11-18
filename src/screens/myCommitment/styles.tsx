@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     fontSize: ms(15),
     lineHeight: ms(19),
-    color: colors.darkMain,
+    color: colors.silverTree,
   },
   imgTitle: {
     width: ms(16),

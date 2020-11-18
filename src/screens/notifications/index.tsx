@@ -10,7 +10,7 @@ import {Icon} from 'react-native-elements';
 import Modal from 'react-native-modal';
 import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
-import {notiFriendProgressScreen} from '../myCommitment/friendProgress/navigation';
+import {notiFriendProgressScreen} from '../myCommitment/driveDetail/navigation';
 import {APP_NOTIFICATION_SCREEN} from './navigation';
 import {IProps, IState} from './propState';
 import {getListNotificationsAction} from './redux/actions';

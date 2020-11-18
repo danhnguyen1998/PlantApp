@@ -1,10 +1,8 @@
-import TitleComponent from '@src/containers/components/title';
 import {offLoadingAction, onLoadingAction} from '@src/containers/redux/common/actions';
 import {colors, common} from '@src/styles';
 import {ms} from '@src/styles/scalingUtils';
 import React from 'react';
-import {Dimensions, Text, TouchableOpacity, View, ScrollView, FlatList} from 'react-native';
-import {AnimatedCircularProgress} from 'react-native-circular-progress';
+import { Text, TouchableOpacity, View, ScrollView, FlatList} from 'react-native';
 import {Header} from 'react-native-elements';
 import {Navigation} from 'react-native-navigation';
 import Icon5 from 'react-native-vector-icons/FontAwesome5';
@@ -18,10 +16,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import ImagePicker, {Image as IMG} from 'react-native-image-crop-picker';
 import moment from 'moment';
 import ActionSheet from 'react-native-actionsheet';
-import InputComponent from '@src/containers/components/input';
 var RNFS = require('react-native-fs');
 
-class FriendProgressComponent extends React.Component<IProps> {
+class DriveDetailComponent extends React.Component<IProps> {
   ActionSheetSelectPhoto: ActionSheet = null;
 
   state: IState = {
@@ -37,10 +34,8 @@ class FriendProgressComponent extends React.Component<IProps> {
     const token = (await GoogleSignin.getTokens()).accessToken;
     GDrive.setAccessToken(token);
     GDrive.init();
-    // const folderId = await GDrive.files.safeCreateFolder({
-    //   name: 'PlantApp',
-    //   parents: [this.props.item.name],
-    // });
+    console.log(GDrive.isInitialized(), 'GDrive.()');
+
     let query = `'${this.props.item.id}' in parents`;
 
     (GDrive as any).files
@@ -48,13 +43,12 @@ class FriendProgressComponent extends React.Component<IProps> {
         q: query,
         // q: "type: image",
       })
-      .then((res) => {
-        res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
+        console.log(data, 'listImages');
         this.setState((state) => ({
           ...state,
-          listImages: data.files,
+          listImages: data ? data.files : [],
         }));
       }) //data.files is the array containing list of files
       .catch((err) => console.log(err));
@@ -126,7 +120,7 @@ class FriendProgressComponent extends React.Component<IProps> {
     (this.ActionSheetSelectPhoto as any).show();
   };
 
-  downloadImage = (item) => {
+  downloadImage = () => {
     // GDrive.files.download(item.id, downloadFileOptions, queryParams);
   };
 
@@ -137,7 +131,7 @@ class FriendProgressComponent extends React.Component<IProps> {
           <View style={styles.itemTop}>
             <View style={styles.itemTopLeft}>
               <View style={styles.wrapItemTitle}>
-                <Text style={styles.itemTitle}>{item ? item.name : null}</Text>
+                <Text style={styles.itemTitle}>{item.name}</Text>
               </View>
             </View>
           </View>
@@ -163,10 +157,7 @@ class FriendProgressComponent extends React.Component<IProps> {
               data={this.state.listImages}
               renderItem={this._renderItem}
               keyExtractor={(item) => `${item.id}`}
-              // onEndReachedThreshold={0.5}
-              // onEndReached={handleLoadMore}
               style={styles.list}
-              // refreshControl={<RefreshControl refreshing={state.refreshing} onRefresh={onRefresh} />}
             />
           ) : (
             <View style={styles.listNoPlant}>
@@ -194,4 +185,4 @@ class FriendProgressComponent extends React.Component<IProps> {
 const mapStateToProps = () => ({});
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators({offLoadingAction, onLoadingAction}, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(FriendProgressComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(DriveDetailComponent);

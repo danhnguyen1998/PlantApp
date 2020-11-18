@@ -46,8 +46,8 @@ import {APP_STARTED_SECOND_SCREEN} from './screens/started/startedSecond/navigat
 import StartedFourComponent from './screens/started/startedFour';
 import {APP_STARTED_FOUR_SCREEN} from './screens/started/startedFour/navigation';
 import theme from './styles/theme';
-import {APP_NOTIFICATION_FRIEND_PROGRESS_SCREEN} from './screens/myCommitment/friendProgress/navigation';
-import FriendProgressComponent from './screens/myCommitment/friendProgress';
+import {APP_NOTIFICATION_FRIEND_PROGRESS_SCREEN} from './screens/myCommitment/driveDetail/navigation';
+import DriveDetailComponent from './screens/myCommitment/driveDetail';
 
 const Screens = new Map();
 Screens.set(APP_STARTED_SCREEN, StartedScreen);
@@ -74,7 +74,7 @@ Screens.set(MY_PROFILE_SUPPORT_FAQ_SCREEN, SupportFAQComponent);
 Screens.set(MY_PROFILE_SUPPORT_CUSTOMER_SCREEN, SupportCustomerComponent);
 Screens.set(MY_PROFILE_SUPPORT_REPORT_SCREEN, SupportReportComponent);
 Screens.set(MY_PROFILE_TANDC_SCREEN, TAndCComponent);
-Screens.set(APP_NOTIFICATION_FRIEND_PROGRESS_SCREEN, FriendProgressComponent);
+Screens.set(APP_NOTIFICATION_FRIEND_PROGRESS_SCREEN, DriveDetailComponent);
 
 const WrappedComponent = (Component: FunctionComponent | ComponentClass, store: Store) => {
   return function inject(props: any) {

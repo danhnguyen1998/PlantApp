@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: ms(25),
+    // marginTop: ms(25),
     marginHorizontal: ms(5),
   },
   selectCommitments: {
@@ -301,7 +301,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.silverTree,
   },
   iconAdd: {
-    alignSelf: 'center',
+    justifyContent: 'center', 
+    alignItems:'center'
   },
   headerLeftTouch: {
     flex: 1,

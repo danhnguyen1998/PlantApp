@@ -5,16 +5,16 @@ import React, {FC, useState} from 'react';
 import {Image, Text, TouchableOpacity, View, FlatList} from 'react-native';
 import {rootProfileScreen} from '../myProfile/navigation';
 import {rootCloudStorageScreen} from '@src/screens/myCommitment/cloudStorage/navigation';
+import {rootGoogleDriveScreen} from '@src/screens/myCommitment/googleDrive/navigation';
 import {APP_MY_COMMITMENT_SCREEN} from './navigation';
 import {IProps, IState} from './propState';
 import styles from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
-
   const [state] = useState<IState>({
     listFolder: [
-      {name: 'google-drive', value: 'Google Drive', icon: 'download'},
+      {name: 'google-drive', value: 'Google Drive', icon: 'logo-google'},
       {name: 'cloud', value: 'Cloud', icon: 'cloud'},
     ],
   });
@@ -24,9 +24,9 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
   };
 
   const _onPressCommitmentDetail = (item) => async () => {
-    if(item.name === 'google-drive'){
-
-    } else if(item.name === 'cloud'){
+    if (item.name === 'google-drive') {
+      rootGoogleDriveScreen(props.componentId);
+    } else if (item.name === 'cloud') {
       rootCloudStorageScreen(props.componentId);
     }
   };
@@ -39,7 +39,7 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
             <View style={styles.itemTopLeft}>
               <View style={styles.wrapItemTitle}>
                 <Text style={styles.itemTitle}>{item.value}</Text>
-                <Icon name={item.icon} color={colors.darkMain} size={30} />
+                <Icon name={item.icon} color={colors.silverTree} size={30} />
               </View>
             </View>
           </View>
