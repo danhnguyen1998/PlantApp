@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   },
   item: {
     flexDirection: 'row',
+    // alignItems: 'center',
     justifyContent: 'space-between',
     padding: ms(20),
     borderRadius: 16,
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
   itemLeft: {
     paddingRight: ms(20),
     borderRightColor: colors.grey,
+    // borderRightWidth: ms(1),
     flex: 1,
   },
   itemRight: {
@@ -77,8 +79,8 @@ const styles = StyleSheet.create({
   },
   wrapItemTitle: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    // flex: 1,
+    paddingRight: ms(20),
   },
   itemTitle: {
     fontFamily: 'Poppins-Bold',
@@ -94,6 +96,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    // borderBottomColor: '#E3E0DC',
+    // borderBottomWidth: ms(1),
+    // borderStyle: 'dashed',
+    paddingBottom: ms(10),
   },
 
   borderDashed: {
@@ -112,6 +118,7 @@ const styles = StyleSheet.create({
   },
   itemTopLeft: {
     flex: 1,
+    paddingRight: ms(10),
   },
   itemTopRight: {
     flexDirection: 'row',

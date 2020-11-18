@@ -12,13 +12,10 @@ import {connect} from 'react-redux';
 import {bindActionCreators, Dispatch} from 'redux';
 import {notiFriendProgressScreen} from '../myCommitment/friendProgress/navigation';
 import {APP_NOTIFICATION_SCREEN} from './navigation';
-import {notiPayoutScreen} from './payout/navigation';
-import {notiPayoutSuccessScreen} from './payout_success/navigation';
 import {IProps, IState} from './propState';
 import {getListNotificationsAction} from './redux/actions';
 import styles from './styles';
 import ButtonComponent from '@src/containers/components/button';
-import {addCommitmentFinishScreen} from '../myCommitment/addCommitment/finishOnBoarding/navigation';
 import moment from 'moment';
 import Dash from 'react-native-dash';
 
@@ -33,11 +30,11 @@ class NotificationComponent extends React.Component<IProps> {
   }
 
   _goPayout = (item, str2) => () => {
-    notiPayoutScreen(this.props.componentId, {commitmentId: item.commitment_id, name: str2, item});
+    // notiPayoutScreen(this.props.componentId, {commitmentId: item.commitment_id, name: str2, item});
   };
 
   _goPayoutSuccess = (item, str2) => () => {
-    notiPayoutSuccessScreen(this.props.componentId, {commitmentId: item.commitment_id, item, name: str2});
+    // notiPayoutSuccessScreen(this.props.componentId, {commitmentId: item.commitment_id, item, name: str2});
   };
 
   _showModal = (item) => () => {
@@ -61,7 +58,7 @@ class NotificationComponent extends React.Component<IProps> {
         modalStatus: false,
       },
       () => {
-        addCommitmentFinishScreen(this.props.componentId, {item});
+        // addCommitmentFinishScreen(this.props.componentId, {item});
       },
     );
   };

@@ -18,6 +18,8 @@ interface IDispatchToProps {
 
 interface IState {
   listFolder: any,
+  showModalName: boolean;
+  listImages: any;
 }
 
 export {IProps, IState};

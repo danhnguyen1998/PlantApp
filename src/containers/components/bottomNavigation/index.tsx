@@ -1,5 +1,5 @@
 import {RootState} from '@src/boot/rootReducers';
-import {addCommitmentChooseGoalScreen} from '@src/screens/myCommitment/addCommitment/chooseGoal/navigation';
+
 import {APP_MY_COMMITMENT_SCREEN, rootMyCommitmentScreen} from '@src/screens/myCommitment/navigation';
 import {APP_MY_FRIEND_SCREEN} from '@src/screens/myFriends/navigation';
 import {APP_PROFILE_SCREEN, rootProfileScreen} from '@src/screens/myProfile/navigation';
@@ -14,7 +14,7 @@ import {useSelector} from 'react-redux';
 import {IProps, IState} from './propState';
 import styles from './styles';
 import ButtonComponent from '@src/containers/components/button';
-import {myProfileUpdatePaymentScreen} from '@src/screens/myProfile/payment/updatePayment';
+
 import ImagePicker, {Image as IMG} from 'react-native-image-crop-picker';
 import moment from 'moment';
 import GDrive from 'react-native-google-drive-api-wrapper';
@@ -171,7 +171,7 @@ export default function BottomTabNavigation(props: IProps) {
 
   const _submitPaymentMethod = () => {
     _toggleModal();
-    myProfileUpdatePaymentScreen(props.componentId);
+    // myProfileUpdatePaymentScreen(props.componentId);
   };
 
   const _handleTabPress = (newTab: any) => newTab.onPress();
