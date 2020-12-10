@@ -12,12 +12,15 @@ interface IProps extends IStateToProps, IDispatchToProps {
 }
 
 interface IDispatchToProps {
-  onLoadingAction?: () => void;
-  offLoadingAction?: () => void;
+  getListCommitmentAction?: (pageNumber: number, status: string) => void;
+  saveCommitmentStatusAction?: (status: any) => void;
 }
 
 interface IState {
   listFolder: any,
+  showModalName: boolean;
+  listImages: any;
+  name: string;
 }
 
 export {IProps, IState};

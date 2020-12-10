@@ -19,7 +19,7 @@ export default function RootComponent(props: IProps) {
     <Fragment>
       {props.children}
       <InternetError />
-      {/* <LoadingComponent /> */}
+      <LoadingComponent />
     </Fragment>
   );
 }

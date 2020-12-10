@@ -26,6 +26,7 @@ const styles = StyleSheet.create({
   },
   item: {
     flexDirection: 'row',
+    // alignItems: 'center',
     justifyContent: 'space-between',
     padding: ms(20),
     borderRadius: 16,
@@ -42,6 +43,7 @@ const styles = StyleSheet.create({
   itemLeft: {
     paddingRight: ms(20),
     borderRightColor: colors.grey,
+    // borderRightWidth: ms(1),
     flex: 1,
   },
   itemRight: {
@@ -54,6 +56,11 @@ const styles = StyleSheet.create({
     fontSize: ms(14),
     color: colors.darkMain,
   },
+
+  // imgBravo: {
+  //   width: 20,
+  //   height: 20,
+  // },
   numberCount: {
     fontFamily: 'Poppins',
     fontSize: ms(24),
@@ -72,14 +79,14 @@ const styles = StyleSheet.create({
   },
   wrapItemTitle: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    // flex: 1,
+    paddingRight: ms(20),
   },
   itemTitle: {
     fontFamily: 'Poppins-Bold',
     fontSize: ms(15),
     lineHeight: ms(19),
-    color: colors.silverTree,
+    color: colors.darkMain,
   },
   imgTitle: {
     width: ms(16),
@@ -89,6 +96,10 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+    // borderBottomColor: '#E3E0DC',
+    // borderBottomWidth: ms(1),
+    // borderStyle: 'dashed',
+    paddingBottom: ms(10),
   },
 
   borderDashed: {
@@ -107,6 +118,7 @@ const styles = StyleSheet.create({
   },
   itemTopLeft: {
     flex: 1,
+    paddingRight: ms(10),
   },
   itemTopRight: {
     flexDirection: 'row',
@@ -144,10 +156,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
   },
   list: {
-    
     paddingHorizontal: ms(15),
-    // flex: 1,
-    // backgroundColor: colors.bgColor,
+    flex: 1,
+    backgroundColor: colors.bgColor,
   },
   listNoPlant: {
     paddingHorizontal: ms(15),
@@ -180,7 +191,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginTop: ms(25),
+    // marginTop: ms(25),
     marginHorizontal: ms(5),
   },
   selectCommitments: {
@@ -290,25 +301,19 @@ const styles = StyleSheet.create({
     backgroundColor: colors.silverTree,
   },
   iconAdd: {
-    alignSelf: 'center',
+    justifyContent: 'center', 
+    alignItems:'center'
   },
-  sessionDashboard: {
-    flexDirection: 'column',
-    // alignItems: 'center',
-    justifyContent: 'space-between',
+  headerLeftTouch: {
+    flex: 1,
+    justifyContent: 'center',
   },
-  bold: {
-    fontSize: 16, 
-    fontWeight: '700',
-    marginBottom: 5
+  headerCenter: {
+    fontFamily: 'Poppins-Bold',
+    fontSize: ms(15),
+    lineHeight: ms(23),
+    color: colors.darkMain,
   },
-  img: {
-    flex: 1/3,
-    borderRadius: 10,
-  },
-  subText: {
-    flex: 2/3,
-  }
 });
 
 export default styles;

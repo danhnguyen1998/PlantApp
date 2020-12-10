@@ -36,9 +36,9 @@ Navigation.events().registerAppLaunchedListener(() => {
         });
         // const token = await AsyncStorage.getItem(System.TOKEN);
         // if (token) {
-        //   rootMyCommitmentScreen();
+          rootMyCommitmentScreen();
         // } else {
-          rootLoginScreen();
+          // rootLoginScreen();
         // }
       } catch (error) {
         await store.dispatch(logOutAction());

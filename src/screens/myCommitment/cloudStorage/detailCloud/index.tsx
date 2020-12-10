@@ -12,13 +12,14 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {Header} from 'react-native-elements';
 import {Navigation} from 'react-native-navigation';
 
-export const DetailCloudComponent: FC<IProps> = (props: IProps) => {
+export const CloudStorageComponent: FC<IProps> = (props: IProps) => {
   let ActionSheetSelectPhoto: ActionSheet = null;
 
   const [state, setState] = useState<IState>({
     listFolder: [],
     showModalName: false,
     listImages: [],
+    name: '',
   });
 
   useEffect(() => {
@@ -49,7 +50,7 @@ export const DetailCloudComponent: FC<IProps> = (props: IProps) => {
         // }));
       })
       .catch(function (error) {
-        console.log(error, "error")
+        console.log(error, 'error');
       });
   }
 
