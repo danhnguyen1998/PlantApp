@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>457308072636-7fp6ousakj8anl895rhamhv86mguk9is.apps.googleusercontent.com</string>
+	<string>168760344535-7ui8sh9tt891rmcng7ptls1nev5hvk9e.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.457308072636-7fp6ousakj8anl895rhamhv86mguk9is</string>
+	<string>com.googleusercontent.apps.168760344535-7ui8sh9tt891rmcng7ptls1nev5hvk9e</string>
 	<key>API_KEY</key>
-	<string>AIzaSyALrB6_wVVjrCEdmY9dbY3D37szmg-YR2E</string>
+	<string>AIzaSyAFaLTf2YJm8z1SYPQeKZxkg4podnu87zI</string>
 	<key>GCM_SENDER_ID</key>
-	<string>457308072636</string>
+	<string>168760344535</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.pg.Plant</string>
+	<string>com.danh.plantapp</string>
 	<key>PROJECT_ID</key>
-	<string>Plantr-6e5ad</string>
+	<string>shopping-cart-9183e</string>
 	<key>STORAGE_BUCKET</key>
-	<string>Plantr-6e5ad.appspot.com</string>
+	<string>shopping-cart-9183e.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:457308072636:ios:df5a9e9ca6165dbbd43eb9</string>
+	<string>1:168760344535:ios:36cefdc57fa7f5881c1592</string>
 	<key>DATABASE_URL</key>
-	<string>https://Plantr-6e5ad.firebaseio.com</string>
+	<string>https://shopping-cart-9183e.firebaseio.com</string>
 </dict>
 </plist>

@@ -1,8 +1,11 @@
 import {configServices} from '@src/utils';
 
-export const uploadPhoto = async (body: FormData) => {
+export const uploadPhoto = async (plant_image) => {
   try {
-    const response = await configServices.postService('api/v1/accounts/upload_img_profile', body, true, true);
+    const body = {
+      plant_image,
+    };
+    const response = await configServices.postService('get_plants', body, false, false);
     return response;
   } catch (error) {
     throw error;

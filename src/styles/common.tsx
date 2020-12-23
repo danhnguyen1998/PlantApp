@@ -182,6 +182,9 @@ export default StyleSheet.create({
   px20: {
     paddingHorizontal: ms(20),
   },
+  px15: {
+    paddingHorizontal: ms(15),
+  },
   px0: {
     paddingHorizontal: 0,
   },

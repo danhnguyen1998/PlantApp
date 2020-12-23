@@ -21,7 +21,7 @@ const postService = async (url: string, body: object, isAuthorization = true, is
     if (body)
       if (isFormData) requestInit.body = body;
       else requestInit.body = JSON.stringify(body);
-    const response = await fetch(`${Config.HOST_API}/${url}`, requestInit);
+    const response = await fetch(`http://8747f1234dcb.ngrok.io/${url}`, requestInit);
     return await _responseConfig(response);
   } catch (error) {
     throw error;

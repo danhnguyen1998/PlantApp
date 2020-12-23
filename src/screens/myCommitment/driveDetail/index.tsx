@@ -2,7 +2,7 @@ import {offLoadingAction, onLoadingAction} from '@src/containers/redux/common/ac
 import {colors, common} from '@src/styles';
 import {ms} from '@src/styles/scalingUtils';
 import React from 'react';
-import { Text, TouchableOpacity, View, ScrollView, FlatList} from 'react-native';
+import {Text, TouchableOpacity, View, ScrollView, FlatList, Image} from 'react-native';
 import {Header} from 'react-native-elements';
 import {Navigation} from 'react-native-navigation';
 import Icon5 from 'react-native-vector-icons/FontAwesome5';
@@ -23,14 +23,16 @@ class DriveDetailComponent extends React.Component<IProps> {
 
   state: IState = {
     listImages: [],
+    image: '',
   };
+  
   _goBack = () => Navigation.pop(this.props.componentId);
-
   async componentDidMount() {
     this.loadImage();
   }
 
   loadImage = async () => {
+    this.props.onLoadingAction();
     const token = (await GoogleSignin.getTokens()).accessToken;
     GDrive.setAccessToken(token);
     GDrive.init();
@@ -50,8 +52,11 @@ class DriveDetailComponent extends React.Component<IProps> {
           ...state,
           listImages: data ? data.files : [],
         }));
+        this.props.offLoadingAction();
       }) //data.files is the array containing list of files
-      .catch((err) => console.log(err));
+      .catch(() => {
+        this.props.offLoadingAction();
+      });
   };
 
   uploadImage = (index) => {
@@ -61,6 +66,7 @@ class DriveDetailComponent extends React.Component<IProps> {
           compressImageQuality: 0.1,
         }).then(async (image) => {
           RNFS.readFile((image as IMG).path, 'base64').then((res) => {
+            console.log(res, 'res');
             GDrive.files
               .createFileMultipart(
                 res,
@@ -120,13 +126,39 @@ class DriveDetailComponent extends React.Component<IProps> {
     (this.ActionSheetSelectPhoto as any).show();
   };
 
-  downloadImage = () => {
-    // GDrive.files.download(item.id, downloadFileOptions, queryParams);
+  downloadImage = (item) => async () => {
+    const begin = (res) => {
+      console.log('begun');
+    };
+    const downloadDest = `${RNFS.DocumentDirectoryPath}/${(Math.random() * 1000) | 0}.jpg`;
+    let downloadFileOptions = {
+      toFile: downloadDest,
+      begin,
+    };
+    const result = await GDrive.files.download(item.id, downloadFileOptions, {
+      fileId: item.id,
+    });
+
+    let jobId = result.jobId;
+
+    result.promise
+      .then((res) => {
+        console.log(JSON.stringify(res), 'res');
+        this.setState({image: {uri: 'file://' + downloadDest}});
+
+        jobId = -1;
+      })
+      .catch((err) => {
+        // this.showError(err);
+        console.log(err, 'err');
+
+        jobId = -1;
+      });
   };
 
   _renderItem = ({item, index}) => {
     return (
-      <TouchableOpacity>
+      <TouchableOpacity onPress={this.downloadImage(item)}>
         <View style={[styles.item, common.flexColumn]} key={`item_${index}`}>
           <View style={styles.itemTop}>
             <View style={styles.itemTopLeft}>
@@ -151,7 +183,7 @@ class DriveDetailComponent extends React.Component<IProps> {
           }
           centerComponent={<Text style={common.headerTitle}>{this.props.item ? this.props.item.name : null}</Text>}
         />
-        <ScrollView style={common.flex_1}>
+        <View style={common.flex_1}>
           {this.state.listImages.length > 0 ? (
             <FlatList
               data={this.state.listImages}
@@ -164,7 +196,9 @@ class DriveDetailComponent extends React.Component<IProps> {
               <Text style={styles.textNoPlant}>No images</Text>
             </View>
           )}
-        </ScrollView>
+        </View>
+        {this.state.image !== '' && <Image style={styles.img} source={this.state.image} />}
+
         <TouchableOpacity style={styles.btnCenter} onPress={this.onPressAddPhotoBtn}>
           <Icon name="ios-add" size={68} color={colors.white} style={{alignItems: 'center'}} />
         </TouchableOpacity>

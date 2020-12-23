@@ -39,7 +39,7 @@
 		7CF83F1EEBD643A9AEA794FD /* Rubik-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 64BD180D29AC4EB794B6B01E /* Rubik-Medium.ttf */; };
 		7F5F5B9F524E448192DB0198 /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0801072EF9014681BC8D41FE /* Rubik-BoldItalic.ttf */; };
 		80768A327FF64FFB8DC7DFF8 /* Poppins-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 589671F09B6D413E8522B008 /* Poppins-Bold.ttf */; };
-		842F8D3A255BF31500733FE8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 842F8D39255BF31400733FE8 /* GoogleService-Info.plist */; };
+		84B9567D2590503E005060E3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84B9567C2590503D005060E3 /* GoogleService-Info.plist */; };
 		8B489651A44B49B2BD823267 /* Poppins-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EFD2D0519D1D4A83BB33958D /* Poppins-LightItalic.ttf */; };
 		905B148F5A3F4AD5BEB0F42A /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 35E280CF4ED24D2899714EE9 /* Poppins-SemiBold.ttf */; };
 		A5A3F50720430C59CF1EF86C /* libPods-PlantApp-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B6BB67E8E530B6880220C18 /* libPods-PlantApp-tvOSTests.a */; };
@@ -122,7 +122,7 @@
 		7205792CFA4A456499C85629 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		73615A6E52DE443493019876 /* Poppins-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Poppins-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		820534CC388648EB92810830 /* Rubik-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-BlackItalic.ttf"; path = "../src/assets/fonts/Rubik-BlackItalic.ttf"; sourceTree = "<group>"; };
-		842F8D39255BF31400733FE8 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		84B9567C2590503D005060E3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8BFB420B03714D2AB51FA1C2 /* Poppins-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Poppins-ExtraBold.ttf"; path = "../src/assets/fonts/Poppins-ExtraBold.ttf"; sourceTree = "<group>"; };
 		91050654A81BEEFDB9C9C7D2 /* libPods-PlantApp.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlantApp.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9145EB77516D450AAA6AD7DC /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Solid.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Solid.ttf"; sourceTree = "<group>"; };
@@ -208,7 +208,7 @@
 		13B07FAE1A68108700A75B9A /* PlantApp */ = {
 			isa = PBXGroup;
 			children = (
-				842F8D39255BF31400733FE8 /* GoogleService-Info.plist */,
+				84B9567C2590503D005060E3 /* GoogleService-Info.plist */,
 				52786BD8252B40DD0050F59C /* main.jsbundle */,
 				526BC2812438865A00355AEE /* PlantApp.entitlements */,
 				526BC2822438865A00355AEE /* AppCenter-Config.plist */,
@@ -514,7 +514,7 @@
 				01D8EDDC97434AD186176FB7 /* Poppins-MediumItalic.ttf in Resources */,
 				52786BD9252B40DD0050F59C /* main.jsbundle in Resources */,
 				68513BA5C7894B2CA0C864EE /* Poppins-Regular.ttf in Resources */,
-				842F8D3A255BF31500733FE8 /* GoogleService-Info.plist in Resources */,
+				84B9567D2590503E005060E3 /* GoogleService-Info.plist in Resources */,
 				905B148F5A3F4AD5BEB0F42A /* Poppins-SemiBold.ttf in Resources */,
 				ACA8ABA546184375B5F48550 /* Poppins-SemiBoldItalic.ttf in Resources */,
 				3888106F84164871B43FA1A4 /* Poppins-Thin.ttf in Resources */,

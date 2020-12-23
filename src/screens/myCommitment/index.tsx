@@ -11,8 +11,10 @@ import styles from './styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {useDispatch, useSelector} from 'react-redux';
 import {offLoadingAction, onLoadingAction} from '@src/containers/redux/common/actions';
-import moment from 'moment';
 import ActionSheet from 'react-native-actionsheet';
+import {uploadPhoto} from './services';
+import {plantDetailScreen} from './plantDetail/navigation';
+import {barcodeScannerScreen} from './barcodeScanner/navigation';
 
 export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
   let ActionSheetSelectPhoto: ActionSheet = null;
@@ -33,7 +35,6 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
   const goToAccountSettings = () => {
     rootProfileScreen();
   };
-
 
   // const _renderItem = ({item}) => {
   //   return (
@@ -61,26 +62,17 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
       case 0:
         ImagePicker.openCamera({
           compressImageQuality: 0.1,
+          includeBase64: true,
         }).then(async (image) => {
-          const formData = new FormData();
-          const img = {
-            uri: (image as IMG).path,
-            type: (image as IMG).mime || 'image/jpeg',
-            name: (image as IMG).filename || moment(new Date()).format('hmmssMMDDYY') + '.jpg',
-          };
-          formData.append('img', img as any);
           props.onLoadingAction();
-          await uploadPhoto(formData)
+          await uploadPhoto((image as any).data)
             .then((response) => {
-              if (response && response.data) {
-                account.avatar = response.data;
-                setState((state: IState) => ({...state, avatar: image as IMG, avatar_img: null}));
-              } else {
-                Alert.alert('Error', 'Server is busy');
-              }
+              console.log(response, 'res');
+              plantDetailScreen(props.componentId, {item: response});
             })
-            .catch(() => {
-              return;
+            .catch((err) => {
+              console.log(err);
+              // return;
             });
           props.offLoadingAction();
         });
@@ -90,24 +82,19 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
           multiple: false,
           mediaType: 'photo',
           compressImageQuality: 0.1,
+          includeBase64: true,
         })
           .then(async (image) => {
-            const formData = new FormData();
-            const img = {
-              uri: (image as IMG).path,
-              type: (image as IMG).mime || 'image/jpeg',
-              name: (image as IMG).filename || moment(new Date()).format('hmmssMMDDYY') + '.jpg',
-            };
-            formData.append('img', img as any);
             props.onLoadingAction();
-            await uploadPhoto(formData).then((response) => {
-              if (response && response.data) {
-                account.avatar = response.data;
-                setState((state: IState) => ({...state, avatar: image as IMG, avatar_img: null}));
-              } else {
-                Alert.alert('Error', 'Server is busy');
-              }
-            });
+            await uploadPhoto((image as any).data)
+              .then((response) => {
+                console.log(response, 'res');
+                plantDetailScreen(props.componentId, {item: response});
+              })
+              .catch((err) => {
+                console.log(err);
+                // return;
+              });
             props.offLoadingAction();
           })
           .catch(() => {
@@ -117,6 +104,10 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
       default:
         break;
     }
+  };
+
+  const scanBarcode = () => {
+    barcodeScannerScreen(props.componentId);
   };
 
   return (
@@ -132,7 +123,7 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
                 <Text>Diagnose</Text>
               </View>
               <View style={common.flexColumnCenter}>
-                <TouchableOpacity onPress={onPressAddPhotoBtn}>
+                <TouchableOpacity onPress={scanBarcode}>
                   <Icon name="camera" size={30} color={colors.silverTree} />
                 </TouchableOpacity>
                 <Text>Identify</Text>
@@ -191,9 +182,11 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
         <View style={styles.list}>
           <View style={[styles.item, common.flexColumn]}>
             <View style={styles.sessionDashboard}>
-              <Text style={styles.bold}>How to  pruning for maximum blossom & fruit yields</Text>
+              <Text style={styles.bold}>How to pruning for maximum blossom & fruit yields</Text>
               <View style={common.flexRow}>
-                <Text style={styles.subText}>High-quality blossom and yields to expect if you learn these top tricks</Text>
+                <Text style={styles.subText}>
+                  High-quality blossom and yields to expect if you learn these top tricks
+                </Text>
                 <Image
                   style={styles.img}
                   source={{
@@ -212,7 +205,7 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
         options={['Take Photo...', 'Choose from Library...', 'Cancel']}
         cancelButtonIndex={2}
         destructiveButtonIndex={1}
-        onPress={identify}
+        onPress={scanBarcode}
         on={true}
       />
       <BottomTabNavigation

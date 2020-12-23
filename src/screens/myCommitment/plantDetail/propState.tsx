@@ -2,12 +2,9 @@ interface IProps {
   componentId: string;
   item: any;
   username: string;
-  onLoadingAction?: () => void;
-  offLoadingAction?: () => void;
 }
 interface IState {
   listImages: any;
-  image: string;
 }
 
 export {IProps, IState};

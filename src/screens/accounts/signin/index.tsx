@@ -75,6 +75,7 @@ class LoginComponent extends React.Component<IProps> {
       const userInfo = await GoogleSignin.signIn();
       AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
       const token = (await GoogleSignin.getTokens()).accessToken;
+      console.log(token, "token")
       GDrive.setAccessToken(token);
       GDrive.init();
       if (GDrive.isInitialized()) {
@@ -104,47 +105,10 @@ class LoginComponent extends React.Component<IProps> {
   };
 
   render() {
+    console.log()
     return (
       <Layout>
         <View style={{backgroundColor: colors.bgColor, flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-          {/* <KeyboardAwareScrollView
-            keyboardShouldPersistTaps="handled"
-            style={[common.container, {paddingHorizontal: ms(28), marginTop: ms(26)}]}
-            accessibilityLabel="login-page">
-            <Image style={styles.img} source={require('@src/assets/images/logo_main.png')} />
-            <Text style={styles.title}>Sign In</Text>
-            <InputComponent
-              accessibilityLabel="email"
-              ref={(input) => (this.email = input)}
-              leftIcon="ios-mail"
-              leftIconType="ionicon"
-              autoCapitalize="none"
-              placeholder="Email address"
-              onChangeText={this._onChangeText('email')}
-              value={this.state.email}
-            />
-            <InputComponent
-              accessibilityLabel="password"
-              ref={(input) => (this.password = input)}
-              leftIcon="ios-lock"
-              leftIconType="ionicon"
-              rightIcon={this.state.disabledPass ? 'ios-eye-off' : 'ios-eye'}
-              rightIconType="ionicon"
-              placeholder="Password"
-              secureTextEntry={this.state.disabledPass}
-              rightIconOnPress={this.togglePassword}
-              onChangeText={this._onChangeText('password')}
-              value={this.state.password}
-            />
-            <View style={styles.forgotView}>
-              <TouchableOpacity
-                onPress={this._forgotPassword}
-                disabled={this.props.isLoading}
-                accessibilityLabel="btn-forgot-password">
-                <Text style={common.textLink}>Forgot password? </Text>
-              </TouchableOpacity>
-            </View>
-          </KeyboardAwareScrollView> */}
           <GoogleSigninButton
             style={{width: 192, height: 48}}
             size={GoogleSigninButton.Size.Wide}
@@ -152,36 +116,7 @@ class LoginComponent extends React.Component<IProps> {
             onPress={this.signIn}
             // disabled={this.state.isSigninInProgress}
           />
-          {/* <ButtonComponent
-            btnFull={true}
-            onPress={this.signOut}
-            text="Sign out"
-            // disabled={this.props.isLoading}
-            styleContainer={{marginHorizontal: ms(44)}}
-          />
-           <ButtonComponent
-            btnFull={true}
-            onPress={this.isSignedIn}
-            text="isSignedIn"
-            // disabled={this.props.isLoading}
-            styleContainer={{marginHorizontal: ms(44)}}
-          /> */}
         </View>
-        {/* <View style={styles.bottomFixed}>
-          <ButtonComponent
-            btnFull={true}
-            onPress={this._login}
-            text="Sign In"
-            disabled={this.props.isLoading}
-            styleContainer={{marginHorizontal: ms(44)}}
-          />
-          <View style={styles.bottomRowContainer}>
-            <Text style={styles.text}>Do not have an account? </Text>
-            <TouchableOpacity onPress={this._signup} disabled={this.props.isLoading} accessibilityLabel="btn-signup">
-              <Text style={common.textLink}>Sign Up</Text>
-            </TouchableOpacity>
-          </View>
-        </View> */}
       </Layout>
     );
   }

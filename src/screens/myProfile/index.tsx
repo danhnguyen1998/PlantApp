@@ -58,8 +58,8 @@ class MyProfileComponent extends React.Component<IProps> {
 
   _signout = async() => {
     try {
-      await GoogleSignin.revokeAccess();
-      await GoogleSignin.signOut();
+      // await GoogleSignin.revokeAccess();
+      // await GoogleSignin.signOut();
       AsyncStorage.clear();
       rootLoginScreen();
     } catch (error) {

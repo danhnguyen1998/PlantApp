@@ -313,11 +313,6 @@ const styles = StyleSheet.create({
     lineHeight: ms(23),
     color: colors.darkMain,
   },
-  img: {
-    alignSelf: 'center',
-    width: ms(230),
-    height: ms(230),
-  },
 });
 
 export default styles;
