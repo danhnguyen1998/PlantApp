@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   section: {
     backgroundColor: '#fff',
     marginBottom: 10,
-    padding: 15
+    padding: 15,
   },
   listNoPlant: {
     paddingHorizontal: ms(15),
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
   },
   iconRight: {
-    marginRight: 7
+    marginRight: 7,
   },
   titleSection: {
     fontSize: ms(18),

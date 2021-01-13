@@ -315,8 +315,8 @@ const styles = StyleSheet.create({
   },
   img: {
     alignSelf: 'center',
-    width: ms(230),
-    height: ms(230),
+    width: ms(100),
+    height: ms(100),
   },
 });
 

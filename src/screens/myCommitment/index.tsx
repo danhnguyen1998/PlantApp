@@ -15,6 +15,11 @@ import ActionSheet from 'react-native-actionsheet';
 import {uploadPhoto} from './services';
 import {plantDetailScreen} from './plantDetail/navigation';
 import {barcodeScannerScreen} from './barcodeScanner/navigation';
+import { rootAccessResultScreen } from './accessResult/navigation';
+import { rootShareDriveScreen } from './shareDrive/navigation';
+import { rootScheduleCareScreen } from './scheduleCare/navigation';
+import { rootOptionUploadScreen } from './optionUpload/navigation';
+import { rootOptionAccessScreen } from './optionAccess/navigation';
 
 export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
   let ActionSheetSelectPhoto: ActionSheet = null;
@@ -107,8 +112,21 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
   };
 
   const scanBarcode = () => {
-    barcodeScannerScreen(props.componentId);
+    // barcodeScannerScreen(props.componentId);
+    rootOptionUploadScreen(props.componentId);
   };
+
+  const access = () => {
+    rootOptionAccessScreen(props.componentId)
+  }
+
+  const shareDrive = () => {
+    rootShareDriveScreen(props.componentId)
+  }
+
+  const scheduleCare = () => {
+    rootScheduleCareScreen(props.componentId)
+  }
 
   return (
     <>
@@ -117,28 +135,28 @@ export const MyCommitmentComponent: FC<IProps> = (props: IProps) => {
           <View style={[styles.item, common.flexColumn]}>
             <View style={styles.itemTop}>
               <View style={common.flexColumnCenter}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={access}>
                   <Icon name="leaf" size={30} color={colors.silverTree} />
                 </TouchableOpacity>
-                <Text>Diagnose</Text>
+                <Text>Access</Text>
               </View>
               <View style={common.flexColumnCenter}>
                 <TouchableOpacity onPress={scanBarcode}>
                   <Icon name="camera" size={30} color={colors.silverTree} />
                 </TouchableOpacity>
-                <Text>Identify</Text>
+                <Text>Upload</Text>
               </View>
-              <View style={common.flexColumnCenter}>
-                <TouchableOpacity>
+              {/* <View style={common.flexColumnCenter}>
+                <TouchableOpacity onPress={scheduleCare}>
                   <Icon name="water" size={30} color={colors.silverTree} />
                 </TouchableOpacity>
                 <Text>Care</Text>
-              </View>
+              </View> */}
               <View style={common.flexColumnCenter}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={shareDrive}>
                   <Icon name="nuclear" size={30} color={colors.silverTree} />
                 </TouchableOpacity>
-                <Text>Service</Text>
+                <Text>Share</Text>
               </View>
             </View>
           </View>

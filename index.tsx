@@ -14,6 +14,7 @@ import {GoogleSignin} from '@react-native-community/google-signin';
 typography();
 
 const store = configureStore();
+console.disableYellowBox = true;
 
 registerScreens(store);
 

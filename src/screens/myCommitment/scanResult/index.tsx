@@ -12,6 +12,7 @@ import {Navigation} from 'react-native-navigation';
 import {offLoadingAction, onLoadingAction} from '@src/containers/redux/common/actions';
 import {useDispatch, useSelector} from 'react-redux';
 import {RootState} from '@src/boot/rootReducers';
+import { rootStageListScreen } from '../stageList/navigation';
 
 export const ScanResultComponent: FC<IProps> = (props: IProps) => {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export const ScanResultComponent: FC<IProps> = (props: IProps) => {
       name: 'PlantApp',
       parents: ['root'],
     });
-    let query = `'${folderId}' in parents`;
+    const query = `'${folderId}' in parents`;
     props.onLoadingAction();
 
     (GDrive as any).files
@@ -67,10 +68,8 @@ export const ScanResultComponent: FC<IProps> = (props: IProps) => {
   };
 
   const _onPressCommitmentDetail = (item) => async () => {
-    notiFriendProgressScreen(props.componentId, {item});
+    rootStageListScreen(props.componentId, {item});
   };
-
-  console.log(state.listFolder, ' dl');
 
   const _renderItem = ({item, index}) => {
     return (
@@ -108,7 +107,7 @@ export const ScanResultComponent: FC<IProps> = (props: IProps) => {
           name: 'PlantApp',
           parents: ['root'],
         });
-        let query = `'${folderId}' in parents`;
+        const query = `'${folderId}' in parents`;
 
         (GDrive as any).files
           .list({
@@ -153,7 +152,7 @@ export const ScanResultComponent: FC<IProps> = (props: IProps) => {
           },
           common.flex_0,
         ]}
-        accessibilityLabel="commitment-tab-content"></View>
+        accessibilityLabel="commitment-tab-content"/>
       {state.listFolder.length > 0 ? (
         <FlatList
           data={state.listFolder}

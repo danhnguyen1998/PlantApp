@@ -33,7 +33,7 @@ export const GoogleDriveComponent: FC<IProps> = (props: IProps) => {
       name: 'PlantApp',
       parents: ['root'],
     });
-    let query = `'${folderId}' in parents`;
+    const query = `'${folderId}' in parents`;
 
     (GDrive as any).files
       .list({
@@ -123,7 +123,7 @@ export const GoogleDriveComponent: FC<IProps> = (props: IProps) => {
             flex: 1,
             backgroundColor: colors.bgColor,
             paddingHorizontal: (16),
-            paddingTop: 5
+            paddingTop: 5,
           },
           common.flex_0,
         ]}

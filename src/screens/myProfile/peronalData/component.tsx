@@ -143,7 +143,7 @@ export default function PersonalDataComponent(props: IProps) {
         containerStyle={styles.headerContainer}
       />
       <ScrollView style={styles.container}>
-        <ListItem
+        {/* <ListItem
           title="Weight"
           rightTitle={props.weight ? props.weight.toString() + ' lbs' : null}
           bottomDivider={true}
@@ -160,7 +160,7 @@ export default function PersonalDataComponent(props: IProps) {
           titleStyle={styles.listItemText}
           rightTitleStyle={styles.listItemTextRight}
           onPress={_toggleModalHeight}
-        />
+        /> */}
         <ListItem
           title="Gender"
           rightTitle={props.gender === true ? 'Male' : props.gender === false ? 'Female' : null}
@@ -216,7 +216,7 @@ export default function PersonalDataComponent(props: IProps) {
                 <IconIonic name="ios-remove-circle-outline" size={ms(50)} color={colors.eastBay} />
               </TouchableOpacity>
               {/* <Text style={styles.modalValueChange}>{state.weight ? state.weight : 0}</Text> */}
-              <TextInput
+              {/* <TextInput
                 ref={(input) => (weight = input)}
                 autoCapitalize="none"
                 value={state.weight ? state.weight.toString() : '0'}
@@ -224,7 +224,7 @@ export default function PersonalDataComponent(props: IProps) {
                 onChangeText={_onChangeText('weight')}
                 style={styles.modalValueChange}
                 keyboardType="number-pad"
-              />
+              /> */}
               <TouchableOpacity style={styles.modalViewTouch} onPress={_increaseWeight}>
                 <IconIonic name="ios-add-circle-outline" size={ms(50)} color={colors.eastBay} />
               </TouchableOpacity>

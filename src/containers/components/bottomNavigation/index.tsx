@@ -20,7 +20,7 @@ import moment from 'moment';
 import GDrive from 'react-native-google-drive-api-wrapper';
 import ActionSheet from 'react-native-actionsheet';
 import InputComponent from '@src/containers/components/input';
-var RNFS = require('react-native-fs');
+let RNFS = require('react-native-fs');
 
 export default function BottomTabNavigation(props: IProps) {
   props = useSelector<RootState, IProps>((state: RootState) => ({

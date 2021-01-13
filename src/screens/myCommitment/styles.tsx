@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   wrapItemTitle: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   itemTitle: {
     fontFamily: 'Poppins-Bold',
@@ -300,7 +300,7 @@ const styles = StyleSheet.create({
   bold: {
     fontSize: 16, 
     fontWeight: '700',
-    marginBottom: 5
+    marginBottom: 5,
   },
   img: {
     flex: 1/3,
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
   },
   subText: {
     flex: 2/3,
-  }
+  },
 });
 
 export default styles;

@@ -75,7 +75,7 @@ class LoginComponent extends React.Component<IProps> {
       const userInfo = await GoogleSignin.signIn();
       AsyncStorage.setItem('userInfo', JSON.stringify(userInfo));
       const token = (await GoogleSignin.getTokens()).accessToken;
-      console.log(token, "token")
+      console.log(token, 'token')
       GDrive.setAccessToken(token);
       GDrive.init();
       if (GDrive.isInitialized()) {

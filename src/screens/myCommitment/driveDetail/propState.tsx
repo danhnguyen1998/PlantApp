@@ -6,8 +6,11 @@ interface IProps {
   offLoadingAction?: () => void;
 }
 interface IState {
-  listImages: any;
-  image: string;
+  listFolder: any;
+  images: any;
+  name: string;
+  showModalEmail: boolean;
+  item: any;
 }
 
 export {IProps, IState};
