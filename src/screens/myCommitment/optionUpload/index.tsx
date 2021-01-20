@@ -19,6 +19,7 @@ import {validation} from '@src/utils';
 import ButtonComponent from '@src/containers/components/button';
 import {barcodeScannerScreen} from '../barcodeScanner/navigation';
 import {rootCloudStorageScreen} from '../cloudStorage/navigation';
+import { barcodeScannerFcScreen } from '../barcodeScannerFC/navigation';
 
 export const OptionUploadComponent: FC<IProps> = (props: IProps) => {
   const dispatch = useDispatch();
@@ -84,7 +85,7 @@ export const OptionUploadComponent: FC<IProps> = (props: IProps) => {
   };
 
   const cloudStorage = () => {
-    rootCloudStorageScreen(props.componentId);
+    barcodeScannerFcScreen(props.componentId);
   };
 
   return (

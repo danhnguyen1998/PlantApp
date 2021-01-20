@@ -9,7 +9,7 @@ interface IStateToProps {
 interface IProps extends IStateToProps, IDispatchToProps {
   componentId: string;
   avatar_img: string;
-  item: any;
+  barcode: string;
 }
 
 interface IDispatchToProps {
@@ -18,12 +18,9 @@ interface IDispatchToProps {
 }
 
 interface IState {
-  listFolder: any;
+  listFolder: any,
   showModalName: boolean;
   listImages: any;
-  locationName: string;
-  region: any;
-  loading: boolean;
 }
 
 export {IProps, IState};

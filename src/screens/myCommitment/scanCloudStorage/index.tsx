@@ -12,9 +12,9 @@ import AsyncStorage from '@react-native-community/async-storage';
 import {Header} from 'react-native-elements';
 import {Navigation} from 'react-native-navigation';
 import {rootCloudStorageDetailScreen} from '../cloudStorageDetail/navigation';
-import {rootHistoryDetailFCScreen} from '../cloudStorageDetail/historyDetailFC/navigation';
+import {rootCloudStorageDetailStageScreen} from '../cloudStorageDetailStage/navigation';
 
-export const DetailCloudComponent: FC<IProps> = (props: IProps) => {
+export const ScanCloudComponent: FC<IProps> = (props: IProps) => {
   const ActionSheetSelectPhoto: ActionSheet = null;
 
   const [state, setState] = useState<IState>({
@@ -35,7 +35,7 @@ export const DetailCloudComponent: FC<IProps> = (props: IProps) => {
       .then((result) => {
         const listFolder = [];
         result.prefixes.forEach(function (folderRef) {
-          listFolder.push({name: folderRef.name});
+          if (folderRef.name === (props.barcode as any).data) listFolder.push({name: folderRef.name});
         });
         setState((state: IState) => ({
           ...state,
@@ -45,7 +45,7 @@ export const DetailCloudComponent: FC<IProps> = (props: IProps) => {
   };
 
   const _onPressCommitmentDetail = (item) => async () => {
-    rootHistoryDetailFCScreen(props.componentId, {item});
+    rootCloudStorageDetailStageScreen(props.componentId, {item});
   };
 
   const _renderItem = ({item, index}) => {
